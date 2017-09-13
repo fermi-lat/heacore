@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction and example</TITLE>
+<META NAME="description" CONTENT="Introduction and example">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node13.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="node11.html">
+<LINK REL="next" HREF="node13.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html333"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html329"
+  HREF="node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html323"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html331"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html334"
+  HREF="node13.html">pha class</A>
+<B> Up:</B> <A NAME="tex2html330"
+  HREF="node11.html">Spectra</A>
+<B> Previous:</B> <A NAME="tex2html324"
+  HREF="node11.html">Spectra</A>
+ &nbsp; <B>  <A NAME="tex2html332"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00421000000000000000">
+Introduction and example</A>
+</H2>
+
+<P>
+Spectrum files can be manipulated using the pha and phaII classes. The
+latter is simply a vector of pha classes and is useful for handling
+type II PHA files. The grouping class and utility routines are also
+useful for some tasks. As an example the code below reads in a type II
+PHA file, bins up all the spectra by a factor of 2, then writes out
+the result. Note that the data types Integer and Real are defined in heasp.h.
+
+<P>
+<PRE>
+#include "grouping.h"
+#include "phaII.h"
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+  string infile("testin.pha");
+  string outfile("testout.pha");
+
+  phaII inputSpectra;
+
+  Integer Status(0);
+
+
+  // read in all the spectra
+
+  Status = inputSpectra.read(infile, 1);
+
+  Integer Nspectra = inputSpectra.NumberSpectra();
+
+  // loop round the spectra
+
+  for (size_t i=0; i&lt;(size_t)Nspectra; i++) {
+
+    // set up the grouping object to rebin by a factor of 2
+
+    grouping groupInfo;
+    groupInfo.load(2, inputSpectra.phas[i].NumberChannels());
+
+    // rebin this spectrum
+
+    Status = inputSpectra.phas[i].rebinChannels(groupInfo);
+
+  }
+
+  // write the new spectra out copying extra keywords and extensions from
+  // the input file
+
+  Status = inputSpectra.write(outfile, infile);
+
+  exit(0);
+}
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

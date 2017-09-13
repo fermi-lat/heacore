@@ -1,0 +1,466 @@
+********************************************************************************
+                         RELEASE NOTES FOR HEASOFT 6.22
+                                August 15, 2017
+********************************************************************************
+
+The HEASoft 6.22 release is driven by updates to several mission-specific
+software packages (NICER, Hitomi, NuSTAR, Swift, XTE), but also includes
+updates to other packages which have been revised to mirror the current
+development versions in use at the HEASARC.
+
+As before, configuration-related changes thoughout the package mean that
+users who already have HEASoft v6.x.x installed will need to completely
+replace their software installation; there is no clean way to simply
+overlay this new release or to update an existing installation.
+
+********************************************************************************
+                                    CFITSIO
+********************************************************************************
+
+Updates to version 3.42:
+                   
+- Added HTTPS support to the collection of drivers handled in cfileio.c
+  and drvrnet.c.  This also handles the case where HTTP transfers are 
+  rerouted to HTTPS.  Note that this enhancement introduces a dependency
+  on the libcurl development package.  If this package is absent, CFITSIO
+  will still build but will not have HTTPS capability.
+                   
+- Made fix to imcomp_init_table function in imcompress.c.  It now writes
+  ZSIMPLE keyword only to a compressed image that will be placed in the
+  primary header.
+     
+- Fix made to fits_get_col_display_width for case of a vector column
+  of strings. 
+
+********************************************************************************
+                                      FV
+********************************************************************************
+
+- Fixed abort under Apple XCode 8.3.x with update to use Tcl/Tk 8.6.6.
+
+- Fixed bug in which the original file was mistakenly updated after a
+  'Save As' copy was made.
+
+********************************************************************************
+                                     HEASP
+********************************************************************************
+
+- Changed definition in heasp.h of Real from float to double for
+  consistency with xspec.
+  
+- Modified grouping class to make Flag be 1 for start and -1 for
+  continuation of a bin for consistency with the OGIP standard.
+  
+- Added option to pha class to group by signal-to-noise.
+  
+- Modified table class read to have the option of not loading all the
+  tabulated spectra at the same time. Added a new method to then load
+  spectra for a list of index positions. Added a method to return the
+  interpolated spectrum on the tabulated energy bins for an input set
+  of parameter values.
+
+********************************************************************************
+                                   ATTITUDE
+********************************************************************************
+
+- prefilter: Update to v3.4: add orbmode=XTE which allows XTE-style orbit
+  as input (also Chandra & NICER).  Add attfile=QUAT(x,x,x,x) which allows
+  static attitude quaternion to be entered instead of an attitude file.
+  Fix bug in handling of Z position vector.  Fix bug converting to kilometers
+  that prefilter wants.  Add timing tolerance for orbit extrapolation, between
+  large gaps that still bracket the desired point.  Add TDISPn output to
+  prefilter FITS file for better visibility.
+
+********************************************************************************
+                                   CALTOOLS
+********************************************************************************
+
+- quzcif: Added hidden 'quality' parameter so users can search for CALDB
+  files where quality is not 0.  This is useful for seeing the number of 
+  "bad" files in a CIF, or for setting a non-zero quality to use if a
+  calibration file that would normally be avoided may be appropriate
+  in certain circumstances.
+
+********************************************************************************
+                                    FUTILS
+********************************************************************************
+
+- finterp: Fix interpolation of multiple columns.
+
+********************************************************************************
+                                    HEAGEN
+********************************************************************************
+
+- barycorr: Major rewrite to version 2.0:
+
+  Changes to the internal C code of barycorr to properly handle multiple
+  orbit files and orbit files with gaps.  Reduce the amount of extraneous
+  checking by the perl wrapper script. Unit tests still pass to within 500
+  nanoseconds.
+
+  The orbit interpolation algorithm is slightly revised to a true cube spline
+  interpolation, but should be improved over the one originally used.  In
+  practice this new algorithm causes <100 nsec differences from the previous
+  one, which is negligible.
+
+  Missions should decide how much or little interpolation/extrapolation is
+  required.  The search functions have separate tolerances for both
+  interpolation and extrapolation.  In practice, RXTE and Chandra do not allow
+  extrapolation; Swift and NuSTAR allow up to 2 seconds of extrapolation.
+
+  All missions: If CLOCKAPP exists, it is set to true upon successful return
+  of the task.
+
+  Add new ephem parameter to either choose a JPL planetary ephemeris file
+  name, or DEFAULT to choose based on the reference frame.
+
+  Update for NICER files. 
+
+  Swift: v2.0 correctly updates the DATE-OBS and DATE-END keywords.  This
+  is a change from previous behavior where the perl wrapper updated TSTART
+  and TSTOP but not the DATE-* keywords.  The task no longer creates a
+  RAWTIME column.  This column was not meant to be useful for scientists,
+  but was used in the internal calculations of the task.  v2.0 has improved
+  behavior around UTC leap second rollover boundaries.  Previously there
+  could be several 10s of seconds of error around the new year.  With the
+  new version, this problem area is reduced to a ~1 second window where
+  errors could occur.
+
+  Apply barycenter correction to a column named 'ENDTIME' for Swift XRT
+  hk data.  This is required to handle XRT light curves obtained from
+  barycenter-corrected event files when running `xrtlccorr' to account
+  for time-dependent PSF/EXPOSURE losses.
+
+  v2.0 no longer assumes that the current directory is writable.
+
+  Fix bug in double-counting TIMEZERO, which shows up in output of
+  extractor light curves.
+
+- barycen: Reports error from getPar function using C printf rather than
+  writing output to log, which is not yet initialized at that point.
+
+- xrtraytrace: Fixed memory leaks to address segfault that occurred only
+  for the option source=PHOTONLIST, under Mac OSX with Xcode 8.3.x.
+
+- VOtable2xsp: Changed all filename parameters to be *file, not *fil.
+
+********************************************************************************
+                                    HEASARC
+********************************************************************************
+
+- extractor: Fixed errors when reading and writing multiple event
+  files with different column ordering which contain A and/or X
+  format columns.  This serendipitously appears to also fix a
+  memory fault from the same bug report.
+
+********************************************************************************
+                                    HEASIM
+********************************************************************************
+
+- Bug-fix: No longer segfaults by attempting to free an unallocated
+  instrument map array, when SKIPFOV=YES.
+
+- Behavior change: When the XSPEC library is used for a single
+  Gaussian line spectral component, the sigma is set explicitly to
+  1e-6 keV instead of accepting the library internal default.
+
+********************************************************************************
+                                   HEATOOLS
+********************************************************************************
+
+- ftlist: Fix ftlist output for case of vector columns.  Fix incomplete
+  output for files with "+0" in their name.
+
+- ftmgtime (NEW TASK): Merge two or more GTI FITS files.  Improves upon
+  the older task "mgtime" in several ways; run "fhelp ftmgtime" for more
+  information.
+
+********************************************************************************
+                                    XSELECT
+********************************************************************************
+
+- xselect.mdb: Changed NICER instrument name to XTI and default spectrum
+  column to PI.
+
+********************************************************************************
+                                     XSPEC
+********************************************************************************
+
+HEASoft 6.22 includes Xspec v12.9.1m. See the Xspec issues page for
+more information:
+
+ https://heasarc.gsfc.nasa.gov/lheasoft/xanadu/xspec/issues/issues.html
+
+********************************************************************************
+                                     XSTAR
+********************************************************************************
+
+- New version 2.41:
+
+  Fix to type 70 calculation (recombination to pseudo-levels) for He-like
+  ions which partially smooths the density-dependent behavior near density
+  of 10$^{10}$ cm$^{-3}$, by using quadratic interpolation rather than linear.
+
+  Fix which passes real*4 variable to FITSIO routine in fstepr4.
+
+  Increase size of temporary array in routine reading atomic database.
+
+  Update to treatment of dielectronic satellite emission in calt72.
+
+  Remove arrays called vsav, rates, and idrates which contained temporary
+  saved rates in order to save memory space.
+
+  Increase value of crit and crit2 in msolvelucy from 1.e-10 to 1.e-4.
+
+  Add data type 96, safranova satellite emission for Fe XXIV.
+
+  Changes to atomic database: update to Fe XXIV DR satellite emission using
+  rates from Bautista et al. 2003; fix to the Fe XXV forbidden line (2 photon)
+  decay; addition of direct excitation of Fe XXIV satellites using rates from
+  atomdb; also direct excitation of Fe XXV lines using rates from atomdb.
+
+********************************************************************************
+                                    HITOMI
+********************************************************************************
+
+Hitomi Version 006 (2017 April)
+
+Major changes introduced in this version:
+
+Mission Applications:
+
+- aharfgen: 
+
+  * Behavior change:  Processing of heasim photon list now uses
+    ftools rather than Perl code.
+
+  * Bug-fix:  For sourcetype=IMAGE, corrected a formula involved
+    in converting simulated event coordinates to RA and Dec.  The
+    error was affecting the effective area of off-axis positions
+    at high Declination.  Only IMAGE mode was affected.
+
+- ahgainfit:
+
+  * Bug-fix: Error bands for 'width' and 'shift' computed using
+    the criterion delta chi^2 = 1 were erroneous for cases with
+    poor fits.  Fixed by adding a subscript bounds check to loops
+    that search arrays of chi^2 values.
+
+- ahnxbgen:
+
+  * Behavior change:  Intermediate file extractspback.pha is now
+    deleted if CLEANUP=YES.
+
+- ahsxtarfgen:
+
+  * Bug-fix:  PSF fraction computation corrected.
+
+HXI/SGD Applications
+
+- hxievtid:
+
+  * Bug-fix: Now stores correct value of TLMAX for FOCX, FOCY, X,
+    and Y coordinate columns (Note: these values were always correct
+    in any case after running task coordevt.)
+
+SXS Applications
+
+- sxsbranch:
+
+  * Bug-fix: Crosstalk event counting for flight data files corrected.
+  * Behavior changed: Now outputs branching ratio per pixel rather
+    than exposure time per pixel.
+  * New parameter: TSTART.  
+  * Deleted parameters: RTMAX and DMMIN.
+
+- sxsextend:
+
+  * Bug-fix: Now uses EPIPER and EPI2PER columns for input instead of
+    EPI/EPI2 when running in fast mode on a sequence requiring the
+    Perseus correction.
+
+* Libraries:
+
+- ahfits:
+
+  * Behavior change: Default TUNIT, TLMIN, etc. keyword comments have
+    been changed to match the Astro-H SCT FITS document standards.
+  * Bug-fix: In writeKeyVal* functions, if an empty string is given as
+    the comment, the existing comment is now retained.  This change
+    prevents accidental deletion of the comment field of NAXIS2 when
+    the number of rows in a binary table is updated.
+  * Behavior change: Added comment argument to the set functions for
+    TNULL, TDISP, etc.
+  * Behavior change: Keywords set by writeImage() now have comments.
+
+********************************************************************************
+                                     NICER
+********************************************************************************
+
+NICER DAS Version 1.0 (new tasks):
+
+- nicercal: Apply standard calibration to NICER observation
+
+- nicerpi: Apply gain calibration to NICER event file (calculate Energy/PI)
+
+- niextract-events: Fast event filtering, similar to extractor
+
+- nimaketime: Create standard NICER screening GTI
+
+- nimpucal: Apply standard NICER calibration to MPU data
+
+- nimpumerge: Merge NICER event data from multiple MPUs (or observations)
+
+- niprefilter: Create NICER-specific filter file
+
+- nicerversion: Report NICER software version
+
+********************************************************************************
+                                    NUSTAR
+********************************************************************************
+
+NuSTARDAS v1.8.0 software patch:
+
+Note that the CALDB patch 20170727 is required when using the new 'saacalc=3' mode.
+
+- nucalcsaa:
+
+  Add new 'saacalc=3' operation mode.  This accounts for the changes in the
+  internal background related to the evolution of the South Atlantic Anomaly
+  (SAA) throughout the solar cycle. This improves on the 'saacalc=2', though
+  users should check the background filtering reports provided by the NuSTAR
+  SOC (http://www.nustar.caltech.edu/page/background) when deciding which
+  filter parameters to use.
+
+  Improve handling of input cleaned event files.  This patch adjusts the
+  behavior of nucalcsaa so that the fselect FTOOL is no longer run if the
+  SHIELD column is not present in the cleaned event file. The SHIELD column
+  is truncated when the 'cleancols=no' keyword is used by nupipeline, which
+  is the default case.
+
+- nuexpomap:
+
+  Improve the evaluation method for calculating the time-averaged optical
+  axis location. Before the change, the brightest point on the vignetting-
+  corrected exposure map could be off from the time-averaged optical axis
+  position by up to 10". This has been fixed and the two locations will
+  now correspond to each other. This change affects only the vignetting
+  corrected exposure map, which is used in the light curve generation.
+  It has no impact on the ARF and RMF generation.
+
+- nuscreen:
+
+  Suppress warning messages that occur when a particular event mode does
+  not contain any exposure time and therefore its associated cleaned event
+  file is not generated. This commonly occurs for several of the available
+  data modes (i.e., calibration source data, slew data, and/or data
+  obtained during the SAA passages).
+
+- numkarf:
+
+  Improve effective area calculation for the extended sources in the
+  'flatflag=yes' case.  In the 'flat' ARF case, where the effective area
+  is not weighted by the observed count rate, the effective areas were
+  before evaluated with the same weight in each box that covered the
+  extraction region, regardless of how much area of each box was actually
+  contained in the extraction region. This was particularly sensitive to
+  gaps between the CZT detectors that were inside the boxes but outside
+  the extraction region. To obtain a more accurate effective area, we
+  now weigh the effective areas with the covering region of each box.
+  This change only influences the 'flatflag=yes' case.
+
+- nupipeline:
+
+  Now supports the keywords for the handling of the new case 'saacalc=3'
+  of the module nucalcsaa.
+
+********************************************************************************
+                                     SWIFT
+********************************************************************************
+
+GEN:
+
+- swifttime & swtimecorr: Allow https prefix for clock file.
+
+BAT:
+
+- Error checking for http now includes https too.
+
+UVOT:
+
+- uvotimage: Raw UVOT images have the left-most 8 unbinned columns wrapped
+  from the right side.  Zeroed them out to prevent unintended consequences
+  due to counts in the wrong position.
+
+- uvotinteg: Fix length argument of strncpy; was causing run-time failures
+  when built with Apple XCode 8.3.x.
+
+- uvotproduct: Add support for ds9 v.7.
+
+XRT (XRTDAS 3.4.0):
+
+- xrtfilter: Add internal run of 'finterp' to extrapolate the values
+  of the STAST_LOSSFCN/SAC_MODESTAT columns of the filter file.
+  
+- xrtpipeline: Add new input parameter 'mkfextrapolate' used for the
+  xrtfilter run.
+
+********************************************************************************
+                                      XTE
+********************************************************************************
+
+- correctlc: Fix abort for method=max case: change size of pcuchar from
+  [1] to [2] to prevent abort in the sprintf of pculist[i] into pcuchar[0],
+  and set trailing pcuchar[1] to 0. Also, initialize pculist for the case
+  where it isn't queried.
+
+- hxtdead: Version 3.0.0: Major rewrite to take out artificial limits
+  (there was a limit of 8192 x 16 sec samples, or 1.57 days); records
+  are now a structure which are easier to (re)allocate; error checking
+  to prevent out of bounds memory accesses; address most compiler
+  warnings; tested against 400 spectra of XTE J1751-305 (obsid 70131)
+  and all were identical.
+
+- pcabackest: Bug fixes: write more compliant TDISP values for background
+  estimates (F8.2 instead of E5); off-by-one bug in string manipulation;
+  initialization bug.  Add the 'modelfamily' parameter which helps the
+  task find the right CALDB file; sensible defaults are applied; use the
+  PCABGFAM keyword in the model file to actually say what family it is,
+  and write that keyword to the output.
+
+- pcadeadcalc1: Improve the compliance of output keywords; remove output
+  columns LiveTimeVect and OnTimeVect which are not used downstream and
+  are difficult to format properly.
+
+- pcadeadcalc2: Improve compliance of output keywords.  Calculate
+  L7CntPcuN column so L7 is available.
+
+- pcaextspect2: Handle user-specified RA/Dec more robustly; fix bug in
+  writing BACKFILE with path components; write RESPFILE, with no path
+  components.  Warn when XPCAARF emits a cryptic error message: it's
+  really because the analyst entered a bad target position.  Added
+  'respdate' parameter; default is to use the centroid-weighted
+  centroid time; set HDUCLAS2=BKG in output background spectrum;
+  fixed typos in computing centroid time.
+
+- pcamergeobsids: Add support for Standard1 files via pcaprepfile1,
+  both preparing and merging.  More careful checking/display of target
+  positions; target positions are computed and compared and outliers
+  are flagged; make missing Standard1 files non-fatal. Ensured that
+  merged observations are merged in time-order.
+
+- pcaprepfile1, pcaextlc1: New tasks for preparing Standard1 files and
+  making standard light curves from them.
+
+- pcaprepobsid: Add support for Standard1 files via pcaprepfile1,
+  both preparing and merging.  More careful checking/display of target
+  position.  Handle user-specified RA/DEC by writing {RA,DEC}_{OBJ,PNT}
+  into the output dead-time and background files; warn if datamodes
+  does not include Standard2; version 1.2.
+
+********************************************************************************
+                                      MISC
+********************************************************************************
+
+- wcslib: Update to version 5.16.
+  http://www.atnf.csiro.au/people/mcalabre/WCS/

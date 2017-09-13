@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>rmft class public methods</TITLE>
+<META NAME="description" CONTENT="rmft class public methods">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node25.html">
+<LINK REL="previous" HREF="node23.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node25.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html487"
+  HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html483"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html477"
+  HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html485"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html488"
+  HREF="node25.html">arf class</A>
+<B> Up:</B> <A NAME="tex2html484"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html478"
+  HREF="node23.html">rmft class</A>
+ &nbsp; <B>  <A NAME="tex2html486"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00436000000000000000">
+rmft class public methods</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE> void load(rmf&amp;)
+</PRE>
+
+<P>
+Load object from a standard rmf object.
+
+<P>
+</LI>
+<LI><PRE> void update
+</PRE>
+
+<P>
+Update the FirstGroup and FirstElement arrays from 
+          NumberGroups and NumberEnergiesGroup, respectively.
+
+<P>
+</LI>
+<LI><PRE> rmft&amp; operator= (const rmft&amp;)
+</PRE>
+
+<P>
+Deep copy.
+
+<P>
+</LI>
+<LI><PRE> Integer NumberChannels()
+</PRE>
+
+<P>
+Number of spectrum channels 
+
+<P>
+</LI>
+<LI><PRE> Integer NumberEnergyBins()
+</PRE>
+
+<P>
+Number of response energies 
+
+<P>
+</LI>
+<LI><PRE> Integer NumberTotalGroups()
+</PRE>
+
+<P>
+Total number of response groups 
+
+<P>
+</LI>
+<LI><PRE> Integer NumberTotalElements()
+</PRE>
+
+<P>
+Total number of response elements 
+
+<P>
+</LI>
+<LI><PRE> Real ElementValue(Integer Channel, Integer EnergyBin)
+</PRE>
+
+<P>
+Return the value for a particular channel and energy.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;Real&gt; RowValues(Integer Channel)
+</PRE>
+
+<P>
+Return the array for a particular channel.
+
+<P>
+</LI>
+<LI><PRE> string disp()
+</PRE>
+
+<P>
+Display information about the object. - return as a string.
+
+<P>
+</LI>
+<LI><PRE> void clear()
+</PRE>
+
+<P>
+Clear information from the object.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

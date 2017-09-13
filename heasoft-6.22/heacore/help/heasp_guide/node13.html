@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>pha class</TITLE>
+<META NAME="description" CONTENT="pha class">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node14.html">
+<LINK REL="previous" HREF="node12.html">
+<LINK REL="up" HREF="node11.html">
+<LINK REL="next" HREF="node14.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html345"
+  HREF="node14.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html341"
+  HREF="node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html335"
+  HREF="node12.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html343"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html346"
+  HREF="node14.html">pha class public methods</A>
+<B> Up:</B> <A NAME="tex2html342"
+  HREF="node11.html">Spectra</A>
+<B> Previous:</B> <A NAME="tex2html336"
+  HREF="node12.html">Introduction and example</A>
+ &nbsp; <B>  <A NAME="tex2html344"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00422000000000000000">
+pha class</A>
+</H2>
+
+<P>
+<PRE>
+class pha{
+ public:
+
+  Integer FirstChannel;     // First legal channel number
+
+  vector&lt;Real&gt; Pha;         // PHA data
+  vector&lt;Real&gt; StatError;   // Statistical error 
+  vector&lt;Real&gt; SysError;    // Statistical error 
+
+  vector&lt;Integer&gt; Channel;  // Channel number
+  vector&lt;Integer&gt; Quality;  // Data quality (0=good, 1=bad, 2=dubious,
+                            //               5=set bad by user) 
+  vector&lt;Integer&gt; Group;    // Data grouping (1=start of bin,
+                            //               -1=continuation of bin)
+
+  vector&lt;Real&gt; AreaScaling; // Area scaling factor 
+  vector&lt;Real&gt; BackScaling; // Background scaling factor 
+
+  Real Exposure;            // Exposure time 
+  Real CorrectionScaling;   // Correction file scale factor 
+
+  Integer DetChans;         // Total legal number of channels
+  bool Poisserr;            // If true, errors are Poisson 
+  string Datatype;          // "COUNT" for count data and "RATE" for count/sec 
+  string PHAVersion;        // PHA extension format version 
+
+  string Spectrumtype;      // "TOTAL", "NET", or "BKG" 
+
+  string ResponseFile;      // Response filename 
+  string AncillaryFile;     // Ancillary filename 
+  string BackgroundFile;    // Background filename 
+  string CorrectionFile;    // Correction filename 
+
+  string FluxUnits;                     // Units for Pha and StatError
+
+  string ChannelType;       // Value of CHANTYPE keyword 
+  string Telescope;                                          
+  string Instrument;
+  string Detector;
+  string Filter;
+  string Datamode;
+
+  vector&lt;string&gt; XSPECFilter; // Filter keywords
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

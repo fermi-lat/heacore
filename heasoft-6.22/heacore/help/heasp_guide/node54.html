@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Error Codes</TITLE>
+<META NAME="description" CONTENT="Error Codes">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node55.html">
+<LINK REL="previous" HREF="node53.html">
+<LINK REL="up" HREF="heasp_guide.html">
+<LINK REL="next" HREF="node55.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html854"
+  HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html850"
+  HREF="heasp_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html844"
+  HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html852"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html855"
+  HREF="node55.html">Change log</A>
+<B> Up:</B> <A NAME="tex2html851"
+  HREF="heasp_guide.html">heasp_guide</A>
+<B> Previous:</B> <A NAME="tex2html845"
+  HREF="node53.html">Ftools and Heasp</A>
+ &nbsp; <B>  <A NAME="tex2html853"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00800000000000000000">
+Error Codes</A>
+</H1>
+
+<P>
+
+<UL>
+<LI>1 : NoSuchFile : Cannot find the file specified.
+
+<P>
+</LI>
+<LI>2 : NoData : A column read has no members.
+
+<P>
+</LI>
+<LI>3 : NoChannelData : The SPECTRUM has no Channel column and no
+channel data can be constructed.
+
+<P>
+</LI>
+<LI>4 : NoStatError : The SPECTRUM has no statistical error column and POISSERR=F.
+
+<P>
+</LI>
+<LI>5 : CannotCreate : Cannot create a new file.
+
+<P>
+</LI>
+<LI>6 : NoEnergLo : The ENERG_LO column in an ARF or RMF file has no data.
+
+<P>
+</LI>
+<LI>7 : NoEnergHi : The ENERG_HI column in an ARF or RMF file has no data.
+
+<P>
+</LI>
+<LI>8 : NoSpecresp : The SPECRESP column in an ARF has no data.
+
+<P>
+</LI>
+<LI>9 : NoEboundsExt : There is no EBOUNDS extension in an RMF file.
+
+<P>
+</LI>
+<LI>10 : NoEmin : The E_MIN column in an RMF file has no data.
+
+<P>
+</LI>
+<LI>11 : NoEmax : The E_MAX column in an RMF file has no data.
+
+<P>
+</LI>
+<LI>12 : NoMatrixExt : There is no MATRIX extension in an RMF file.
+
+<P>
+</LI>
+<LI>13 : NoNgrp : The N_GRP column in an RMF file has no data.
+
+<P>
+</LI>
+<LI>14 : NoFchan : The F_CHAN column in an RMF file has no data.
+
+<P>
+</LI>
+<LI>15 : NoNchan : The N_CHAN column in an RMF file has no data.
+
+<P>
+</LI>
+<LI>16 : NoMatrix : The MATRIX column in an RMF file has no data.
+
+<P>
+</LI>
+<LI>17 : CannotCreateMatrixExt : The output MATRIX extension cannot be created.
+
+<P>
+</LI>
+<LI>18 : CannotCreateEboundsExt : The output EBOUNDS extension cannot be created.
+
+<P>
+</LI>
+<LI>19 : InconsistentGrouping : The grouping information size is
+different from that of the array to which it is being applied.
+
+<P>
+</LI>
+<LI>20 : InconsistentEnergies : The energy information differs
+between the objects which are being compared.
+
+<P>
+</LI>
+<LI>21 : InconsistentChannels : The channel information differs
+between the objects which are being compared.
+
+<P>
+</LI>
+<LI>22 : InconsistentUnits : The units information differs
+between the objects which are being compared.
+
+<P>
+</LI>
+<LI>23 : UnknownXUnits : The wavelength or energy units are not
+  supported.
+
+<P>
+</LI>
+<LI>24 : UnknownYUnits : The flux units are not supported.
+
+<P>
+</LI>
+<LI>25 : InconsistentNumelt : The RMF MATRIX extension NUMELT
+  keyword is inconsistent with the actual number of response elements.
+
+<P>
+</LI>
+<LI>26 : InconsistentNumgrp : The RMF MATRIX extension NUMGRP
+  keyword is inconsistent with the actual number of response groups.
+
+<P>
+</LI>
+<LI>27 : InconsistentNumTableParams : The wrong number of parameters
+  were given to table::getValues.
+
+<P>
+</LI>
+<LI>28 : TableParamValueOutsideRange : A parameter value was given
+  to table::getValues which is outside the tabulated range.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html854"
+  HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html850"
+  HREF="heasp_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html844"
+  HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html852"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html855"
+  HREF="node55.html">Change log</A>
+<B> Up:</B> <A NAME="tex2html851"
+  HREF="heasp_guide.html">heasp_guide</A>
+<B> Previous:</B> <A NAME="tex2html845"
+  HREF="node53.html">Ftools and Heasp</A>
+ &nbsp; <B>  <A NAME="tex2html853"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

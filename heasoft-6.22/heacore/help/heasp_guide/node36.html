@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>grouping class public methods</TITLE>
+<META NAME="description" CONTENT="grouping class public methods">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node37.html">
+<LINK REL="previous" HREF="node35.html">
+<LINK REL="up" HREF="node34.html">
+<LINK REL="next" HREF="node37.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html632"
+  HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html628"
+  HREF="node34.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html622"
+  HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html630"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html633"
+  HREF="node37.html">Other grouping routines</A>
+<B> Up:</B> <A NAME="tex2html629"
+  HREF="node34.html">Grouping</A>
+<B> Previous:</B> <A NAME="tex2html623"
+  HREF="node35.html">grouping class</A>
+ &nbsp; <B>  <A NAME="tex2html631"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00452000000000000000">
+grouping class public methods</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE>grouping(vector&lt;Integer&gt; flaginput)
+</PRE>
+
+<P>
+Constructor from an integer array of flag values.
+
+<P>
+</LI>
+<LI><PRE>string disp()
+</PRE>  
+
+<P>
+Display grouping information. - return as a string.
+
+<P>
+</LI>
+<LI><PRE>void clear()
+</PRE>  
+
+<P>
+Clear grouping information.
+
+<P>
+</LI>
+<LI><PRE>Integer read(string filename, const Integer Number, 
+               const Integer First)
+</PRE>
+
+<P>
+Read from an ascii file of grouping factors. Each line of
+          the file should have three numbers, the start bin, end bin, and
+          grouping factor. The input bin numbers start at First and
+          there are Number in total.
+
+<P>
+</LI>
+<LI><PRE>void load(const Integer BinFactor, const Integer Number)
+</PRE>
+
+<P>
+Set the grouping flags for Number bins with a binning factor
+          of BinFactor.
+
+<P>
+</LI>
+<LI><PRE>Integer load(const vector&lt;Integer&gt;&amp; StartBin, const vector&lt;Integer&gt;&amp; EndBin, 
+               const vector&lt;Integer&gt;&amp; BinFactor, const Integer Number, 
+               const Integer First)
+</PRE>
+
+<P>
+Set grouping flags from an array of binning information in
+          the StartBin, EndBin and BinFactor arrays. The input bin
+          numbers start at First and there are Number in total.
+
+<P>
+</LI>
+<LI><PRE>template &lt;class T&gt;Integer loadMin(const T Minimum,
+       const vector&lt;T&gt; values)
+</PRE>
+       <PRE>template &lt;class T&gt;Integer loadMin(const T Minimum,
+       const Integer StartChannel, const Integer EndChannel, 
+       const vector&lt;T&gt; Values)
+</PRE>
+
+<P>
+Set the grouping flags based on requiring a minimum value in
+          each grouped bin when the values in each channel are those
+          in the input Values array. Optionally only do this between
+          the StartChannel and EndChannel channels.
+
+<P>
+</LI>
+<LI><PRE>bool newBin(const Integer Bin)
+</PRE>
+
+<P>
+Return whether Bin is the start of a group.
+
+<P>
+</LI>
+<LI><PRE>Integer size()
+</PRE>
+
+<P>
+Return number of bins in grouping object.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html632"
+  HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html628"
+  HREF="node34.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html622"
+  HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html630"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html633"
+  HREF="node37.html">Other grouping routines</A>
+<B> Up:</B> <A NAME="tex2html629"
+  HREF="node34.html">Grouping</A>
+<B> Previous:</B> <A NAME="tex2html623"
+  HREF="node35.html">grouping class</A>
+ &nbsp; <B>  <A NAME="tex2html631"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

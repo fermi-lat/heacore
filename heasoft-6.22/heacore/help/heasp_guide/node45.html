@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>RMF routines</TITLE>
+<META NAME="description" CONTENT="RMF routines">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="previous" HREF="node44.html">
+<LINK REL="up" HREF="node43.html">
+<LINK REL="next" HREF="node46.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html748"
+  HREF="node46.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html744"
+  HREF="node43.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html740"
+  HREF="node44.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html746"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html749"
+  HREF="node46.html">ARF files</A>
+<B> Up:</B> <A NAME="tex2html745"
+  HREF="node43.html">RMF files</A>
+<B> Previous:</B> <A NAME="tex2html741"
+  HREF="node44.html">RMF structure</A>
+ &nbsp; <B>  <A NAME="tex2html747"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00522000000000000000">
+RMF routines</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE> int ReadRMFMatrix(char *filename, long RMFnumber, struct RMF *rmf)
+</PRE>
+
+<P>
+Read the RMF matrix from a FITS file - if there are 
+               multiple RMF extensions then read the one with EXTVER=RMFnumber.
+
+<P>
+</LI>
+<LI><PRE> int WriteRMFMatrix(char *filename, struct RMF *rmf)
+</PRE>
+
+<P>
+Write the RMF matrix to a FITS file.
+
+<P>
+</LI>
+<LI><PRE> int ReadRMFEbounds(char *filename, long EBDnumber, struct RMF *rmf).
+</PRE>
+
+<P>
+Read the RMF ebounds from a FITS file - if there
+               are multiple EBOUNDS extensions then read the one with 
+               EXTVER=EBDnumber.
+
+<P>
+</LI>
+<LI><PRE> int WriteRMFEbounds(char *filename, struct RMF *rmf)
+</PRE>
+
+<P>
+Write the RMF ebounds to a FITS file.
+
+<P>
+</LI>
+<LI><PRE> void DisplayRMF(struct RMF *rmf)
+</PRE>
+
+<P>
+Write information about RMF to stdout.
+
+<P>
+</LI>
+<LI><PRE> void ReturnChannel(struct RMF *rmf, float energy, int NumberPhotons, 
+                   long *channel)
+</PRE>
+
+<P>
+Return the channel for a photon of the given input 
+               energy - draws random numbers to return NumberPhotons 
+               entries in the channel array.
+
+<P>
+</LI>
+<LI><PRE> void NormalizeRMF(struct RMF *rmf)
+</PRE>
+
+<P>
+Normalize the response to unity in each energy.
+
+<P>
+</LI>
+<LI><PRE> void CompressRMF(struct RMF *rmf, float threshold)
+</PRE>
+
+<P>
+Compress the response to remove all elements 
+               below the threshold value.
+
+<P>
+</LI>
+<LI><PRE> int RebinRMFChannel(struct RMF *rmf, struct BinFactors *bins)
+</PRE>
+
+<P>
+Rebin the RMF in channel space.
+
+<P>
+</LI>
+<LI><PRE> int RebinRMFEnergy(struct RMF *rmf, struct BinFactors *bins)
+</PRE>
+
+<P>
+Rebin the RMF in energy space.
+
+<P>
+</LI>
+<LI><PRE> void TransposeRMF(struct RMF *rmf, struct RMFchan *rmfchan)
+</PRE>
+
+<P>
+Transpose the matrix.
+
+<P>
+</LI>
+<LI><PRE> float ReturnRMFElement(struct RMF *rmf, long channel, long energybin)
+</PRE>
+
+<P>
+Return a single value from the matrix.
+
+<P>
+</LI>
+<LI><PRE> float ReturnRMFchanElement(struct RMFchan *rmfchan, long channel, 
+                   long energybin)
+</PRE>
+
+<P>
+Return a single value from the transposed matrix.
+
+<P>
+</LI>
+<LI><PRE> int AddRMF(struct RMF *rmf1, struct RMF *rmf2)
+</PRE>
+
+<P>
+Add rmf2 onto rmf1.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html748"
+  HREF="node46.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html744"
+  HREF="node43.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html740"
+  HREF="node44.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html746"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html749"
+  HREF="node46.html">ARF files</A>
+<B> Up:</B> <A NAME="tex2html745"
+  HREF="node43.html">RMF files</A>
+<B> Previous:</B> <A NAME="tex2html741"
+  HREF="node44.html">RMF structure</A>
+ &nbsp; <B>  <A NAME="tex2html747"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

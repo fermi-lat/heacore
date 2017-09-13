@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Table model example</TITLE>
+<META NAME="description" CONTENT="Table model example">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="node3.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html250"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html246"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html242"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html248"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html251"
+  HREF="node9.html">C++ classes and methods</A>
+<B> Up:</B> <A NAME="tex2html247"
+  HREF="node3.html">Python module</A>
+<B> Previous:</B> <A NAME="tex2html243"
+  HREF="node7.html">Response example</A>
+ &nbsp; <B>  <A NAME="tex2html249"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00350000000000000000">
+Table model example</A>
+</H1>
+
+<P>
+The following Python example sets up a table model grid with two
+parameters and one additional parameter (e.g. abundance). 
+The parameters, energies and fluxes are given arbitrary values, 
+in practice these could be read from text files.
+<PRE>
+test = table()
+
+# set table descriptors and the energy array
+test.ModelName = "Test"
+test.ModelUnits = " "
+test.isRedshift = True
+test.isAdditive = True
+test.isError = False
+
+# set up the energies. note that the size is one greater
+# than that of the array for the model fluxes
+for i in xrange(100): test.Energies.append(0.1+i*0.1)
+
+test.NumIntParams = 2
+test.NumAddParams = 1
+
+# define first parameter and give it 11 values ranging from
+# 0.0 to 2.0 in steps of 0.2.
+
+testpar = tableParameter()
+testpar.Name = "param1"
+testpar.InterpolationMethod = 0
+testpar.InitialValue = 1.0
+testpar.Delta = 0.1
+testpar.Minimum = 0.0
+testpar.Bottom = 0.0
+testpar.Top = 2.0
+testpar.Maximum = 2.0
+
+for i in xrange(11): testpar.TabulatedValues.append(0.2*i)
+
+# and push it onto the vector of parameters
+test.pushParameter(testpar)
+
+# define the second parameter and give it 5 values ranging from
+# 4.6 to 5.4 in steps of 0.2.
+
+testpar.clear()
+testpar.Name = "param2"
+testpar.InterpolationMethod = 0
+testpar.InitialValue = 5.0
+testpar.Delta = 0.1
+testpar.Minimum = 4.6
+testpar.Bottom = 4.6
+testpar.Top = 5.4
+testpar.Maximum = 5.4
+
+for i in xrange(11): testpar.TabulatedValues.append(4.6+0.2*i)
+
+# and push it onto the vector of parameters
+test.pushParameter(testpar);
+
+# define an additional parameter (usually the elemental abundance)
+# does not require tabulated values.
+
+testpar.clear()
+testpar.Name = "addparam"
+testpar.InterpolationMethod = 0
+testpar.InitialValue = 0.0
+testpar.Delta = 0.1
+testpar.Minimum = 0.0
+testpar.Bottom = 0.0
+testpar.Top = 5.0
+testpar.Maximum = 5.0
+
+# and push it onto the vector of parameters
+test.pushParameter(testpar)
+
+# now set up the spectra. these are arbitrarily calculated, in a real program 
+# this step would read a file or call a routine.
+
+addflux = []
+testspec = tableSpectrum()
+
+for i1 in xrange(11):
+  for i2 in xrange(5):
+    testspec.clear()
+    testspec.ParameterValues.append(0.2*i1)
+    testspec.ParameterValues.append(4.6+0.2*i2)
+    addflux = []
+    for j in xrange(99):
+      testspec.Flux.append(0.2*i1+10*(4.6+0.2*i2)+j*0.1)
+      addflux.append((i1+1)*(i2+1)+j*0.2)
+    testspec.pushaddFlux(addflux)
+    test.pushSpectrum(testspec)
+
+# now write out the table.
+test.write("test.mod");
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

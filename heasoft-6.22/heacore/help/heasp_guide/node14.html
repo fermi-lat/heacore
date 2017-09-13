@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>pha class public methods</TITLE>
+<META NAME="description" CONTENT="pha class public methods">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node11.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html357"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html353"
+  HREF="node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html347"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html355"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html358"
+  HREF="node15.html">Other pha routines</A>
+<B> Up:</B> <A NAME="tex2html354"
+  HREF="node11.html">Spectra</A>
+<B> Previous:</B> <A NAME="tex2html348"
+  HREF="node13.html">pha class</A>
+ &nbsp; <B>  <A NAME="tex2html356"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00423000000000000000">
+pha class public methods</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE>   Integer read(string filename)
+</PRE>
+       <PRE>   Integer read(string filename, Integer PHAnumber)
+</PRE>
+       <PRE>   Integer read(string filename, Integer PHAnumber,
+       Integer SpectrumNumber)
+</PRE>
+
+<P>
+Read file into object. If PHAnumber is given then look for
+          the SPECTRUM extension with EXTVER=PHAnumber. The third
+          option is to read the pha from the SpectrumNumber row of 
+          a type II file.
+
+<P>
+</LI>
+<LI><PRE> pha&amp; operator= (const pha&amp;)
+</PRE>
+
+<P>
+Deep copy.
+
+<P>
+</LI>
+<LI><PRE> Integer NumberChannels()
+</PRE>
+
+<P>
+Return the size of vector&lt;Real&gt;s.
+
+<P>
+</LI>
+<LI><PRE> string disp()
+</PRE>
+
+<P>
+Display information about the spectrum - return as a string.
+
+<P>
+</LI>
+<LI><PRE> void clear()
+</PRE>
+
+<P>
+Clear information from the spectrum
+
+<P>
+</LI>
+<LI><PRE> string check()
+</PRE>
+
+<P>
+Check completeness and consistency of information in spectrum, 
+          if there is a problem then return diagnostic in string.
+
+<P>
+</LI>
+<LI><PRE> Integer write(string filename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename,
+       Integer HDUnumber)
+</PRE>
+
+<P>
+Write spectrum as type I file. If copyfilename is given then
+          copy from it other HDUs and other keywords in the SPECTRUM
+          extension. If HDUnumber is specified then use the SPECTRUM
+          extension with EXTVER=HDUnumber in copyfilename. Note that 
+          if the output filename exists and already has a SPECTRUM 
+          extension then these methods will write an
+          additional SPECTRUM extension.
+
+<P>
+</LI>
+<LI><PRE> pha&amp; operator*= (const Real)
+</PRE>
+
+<P>
+Multiply by a constant.
+
+<P>
+</LI>
+<LI><PRE> pha&amp; operator+= (const pha&amp;)
+</PRE>
+
+<P>
+Add to another pha. If one or both of the pha have
+           non-Poisson errors then they are added in quadrature. If
+           systematic errors are present then the resulting pha has
+           systematic errors equal to the maximum of those from the
+           input pha. The exposures are added.
+
+<P>
+</LI>
+<LI><PRE> Integer checkCompatibility(const pha&amp;)
+</PRE>
+
+<P>
+Check compatibility with another pha. This should be done
+           before attempting to sum them.
+
+<P>
+</LI>
+<LI><PRE> Integer selectChannels(vector&lt;Integer&gt;&amp; Start, 
+       vector&lt;Integer&gt;&amp; End)
+</PRE>
+
+<P>
+Select a subset of the channels
+
+<P>
+</LI>
+<LI><PRE> Integer setGrouping(grouping&amp;)
+</PRE>
+
+<P>
+Set the pha grouping array from a grouping object.
+
+<P>
+</LI>
+<LI><PRE> grouping getMinCountsGrouping(const Integer MinCounts, 
+       const Integer StartChannel, const Integer EndChannel)
+</PRE>
+       <PRE> grouping getMinCountsGrouping(const Integer MinCounts)
+</PRE>
+
+<P>
+Get grouping (optionally between channels StartChannel and 
+           EndChannel) using a minimum number of counts per bin
+
+<P>
+</LI>
+<LI><PRE> grouping getMinSNGrouping(const Real SignalToNoise, 
+       const Integer StartChannel, const Integer EndChannel, 
+       const pha&amp; Background)
+</PRE>
+       <PRE> grouping getMinSNGrouping(const Real SignalToNoise, 
+       const pha&amp; Background)
+</PRE>
+       <PRE> grouping getMinSNGrouping(const Real SignalToNoise, 
+       const Integer StartChannel, const Integer EndChannel)
+</PRE>
+       <PRE> grouping getMinSNGrouping(const Real SignalToNoise)
+</PRE>
+
+<P>
+Get grouping (optionally between channels StartChannel and 
+           EndChannel) using a minimum S/N. Optionally includes a 
+           background file as well.
+
+<P>
+</LI>
+<LI><PRE> Integer rebinChannels(grouping&amp;)
+</PRE>
+       <PRE> Integer rebinChannels(grouping&amp;, string)
+</PRE>
+
+<P>
+Rebin spectrum channels based on a grouping object. If no
+           string is input then the resulting StatError is calculated
+           by summing in quadrature. If a string is input then the
+           resulting StatError is calculated based on the value of the
+           input string. If it is PROPAGATE then summing in quadrature
+           is used. If not, then GAUSS uses 1/sqrt(Pha), POISS-0 sets
+           Poisserr to true, POISS-1 uses 1 + sqrt(N+0.75), POISS-2
+           uses sqrt(N-0.25), and POISS-3 uses the arithmetic mean of
+           POISS-1 and POISS-2. In general, only the options PROPAGATE
+           or POISS-0 should be used.
+
+<P>
+</LI>
+<LI><PRE> Integer shiftChannels(Integer Start, Integer End,
+       Real Shift)
+</PRE>
+       <PRE> Integer shiftChannels(Integer Start, Integer End, 
+       Real Shift, Real Factor)
+</PRE>
+       <PRE> Integer shiftChannels(vector&lt;Integer&gt;&amp; Start, 
+       vector&lt;Integer&gt;&amp; End, vector&lt;Real&gt;&amp; Shift, vector&lt;Real&gt;&amp;
+       Factor)
+</PRE>
+       <PRE> Integer shiftChannels(vector&lt;Real&gt;&amp; ChannelLowEnergy,
+       vector&lt;Real&gt;&amp; ChannelHighEnergy, Integer Start, Integer End, 
+       Real Shift, Real Factor)
+</PRE>
+       <PRE> Integer shiftChannels(vector&lt;Real&gt;&amp; ChannelLowEnergy,
+       vector&lt;Real&gt;&amp; ChannelHighEnergy, vector&lt;Integer&gt;&amp; Start, 
+       vector&lt;Integer&gt;&amp; End, vector&lt;Real&gt;&amp; Shift, vector&lt;Real&gt;&amp; Factor)
+</PRE>
+
+<P>
+Shift counts in channels. Those counts between channels
+           Start and End will be shifted by Shift channels and
+           stretched by Factor. If the channel energies are given then
+           Shift is assumed to be in energy, otherwise in channels.Total
+           counts are conserved.
+
+<P>
+</LI>
+<LI><PRE> Integer convertUnits(vector&lt;Real&gt;&amp; ChannelLowEnergy,
+       vector&lt;Real&gt;&amp; ChannelHighEnergy, string EnergyUnits)
+</PRE>
+
+<P>
+Convert flux units from whatever they are currently to 
+           ph/cm<IMG
+ WIDTH="12" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^2$">/s. This requires as input the channel energy arrays 
+           from the rmf object and the string specifying their
+           units. The allowed flux units are: ph/cm<IMG
+ WIDTH="12" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^2$">/s/X, where X is
+           one of MeV, GeV, Hz, A, cm, um, nm; ergs/cm<IMG
+ WIDTH="12" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^2$">/s;
+           ergs/cm<IMG
+ WIDTH="12" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^2$">/s/X, where X is one of Hz, A, cm, um, nm;
+           Jy. The allowed energy units are keV, GeV, Hz, angstrom,
+           cm, micron or nm.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html357"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html353"
+  HREF="node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html347"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html355"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html358"
+  HREF="node15.html">Other pha routines</A>
+<B> Up:</B> <A NAME="tex2html354"
+  HREF="node11.html">Spectra</A>
+<B> Previous:</B> <A NAME="tex2html348"
+  HREF="node13.html">pha class</A>
+ &nbsp; <B>  <A NAME="tex2html356"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

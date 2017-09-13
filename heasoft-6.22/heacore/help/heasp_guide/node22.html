@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Other rmf routines</TITLE>
+<META NAME="description" CONTENT="Other rmf routines">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node23.html">
+<LINK REL="previous" HREF="node21.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node23.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html463"
+  HREF="node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html459"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html453"
+  HREF="node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html461"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html464"
+  HREF="node23.html">rmft class</A>
+<B> Up:</B> <A NAME="tex2html460"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html454"
+  HREF="node21.html">rmf class public methods</A>
+ &nbsp; <B>  <A NAME="tex2html462"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00434000000000000000">
+Other rmf routines</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE> rmf operator* (const rmf&amp;, const arf&amp;)
+</PRE>
+       <PRE> rmf operator* (const arf&amp;, const rmf&amp;)
+</PRE>
+
+<P>
+Multiply an rmf by an arf.
+
+<P>
+</LI>
+<LI><PRE> rmf operator* (const rmf&amp;, const Real&amp;)
+</PRE>
+       <PRE> rmf operator* (const Real&amp;, const rmf&amp;)
+</PRE>
+
+<P>
+Multiply an rmf by a factor.
+
+<P>
+</LI>
+<LI><PRE> rmf operator+ (const rmf&amp;, const rmf&amp;)
+</PRE>
+
+<P>
+Add two rmfs.
+
+<P>
+</LI>
+<LI><PRE> void calcGaussResp(const Real width, const Real energ, 
+       const Real threshold, const vector&lt;Real&gt;&amp; ChannelLowEnergy, 
+       const vector&lt;Real&gt;&amp; ChannelHighEnergy, vector&lt;Real&gt;&amp; ResponseVector)
+</PRE>
+
+<P>
+Calculate the response vector for some energy give a gaussian width.
+          The gaussian is assumed to be in the units of energy,
+          ChannelLowEnergy and ChannelHighEnergy. The resulting
+          response vector can be added into a response using addRow.
+
+<P>
+</LI>
+<LI><PRE> size\_t binarySearch(const Real energy, const vector&lt;Real&gt;&amp; lowEnergy,
+       const vector&lt;Real&gt;&amp; highEnergy)
+</PRE>
+
+<P>
+Return the index in the energy array containing the input 
+          energy using binary search.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>table classes</TITLE>
+<META NAME="description" CONTENT="table classes">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="previous" HREF="node32.html">
+<LINK REL="up" HREF="node31.html">
+<LINK REL="next" HREF="node34.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html593"
+  HREF="node34.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html589"
+  HREF="node31.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html585"
+  HREF="node32.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html591"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html594"
+  HREF="node34.html">Grouping</A>
+<B> Up:</B> <A NAME="tex2html590"
+  HREF="node31.html">Table Models</A>
+<B> Previous:</B> <A NAME="tex2html586"
+  HREF="node32.html">Introduction and example</A>
+ &nbsp; <B>  <A NAME="tex2html592"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00442000000000000000">
+table classes</A>
+</H2>
+
+<P>
+The class for parameters:
+
+<P>
+<PRE>
+class tableParameter{
+ public:
+
+  string Name;                  // Parameter name
+  int InterpolationMethod;      // 0==linear, 1==log, -1==additional (non-interp)
+  Real InitialValue;            // Initial value for fit
+  Real Delta;                   // Delta for fit
+  Real Minimum;                 // Hard lower-limit 
+                                // (should correspond to first tabulated value)
+  Real Bottom;                  // Soft lower-limit
+  Real Top;                     // Soft upper-limit
+  Real Maximum;                 // Hard upper-limit 
+                                // (should correspond to last tabulated value)
+  vector&lt;Real&gt; TabulatedValues; // Tabulated parameter values
+</PRE>
+
+<P>
+and its public methods:
+
+<P>
+
+<UL>
+<LI><PRE> string disp()
+</PRE>
+
+<P>
+Display information about the table parameter - return as a string.
+
+<P>
+</LI>
+<LI><PRE> void clear()
+</PRE>
+
+<P>
+Clear contents of the table parameter
+
+<P>
+</LI>
+</UL>
+
+<P>
+The class for model spectra:
+
+<P>
+<PRE>
+class tableSpectrum{
+ public:
+
+  vector&lt;Real&gt; Flux;                 // Model flux
+  vector&lt;Real&gt; FluxError;            // Error on Model flux
+  vector&lt;Real&gt; ParameterValues;      // Parameter values for this spectrum
+  vector&lt;vector&lt;Real&gt;&gt; addFlux;      // Model fluxes for any additional
+                                     // parameters
+  vector&lt;vector&lt;Real&gt;&gt; addFluxError; // Error on model fluxes for any 
+                                     // additional parameters
+</PRE>
+
+<P>
+and its public methods:
+
+<P>
+
+<UL>
+<LI><PRE> void pushaddFlux(vector&lt;Real&gt;)
+</PRE>
+
+<P>
+Push an additional parameter spectrum
+
+<P>
+</LI>
+<LI><PRE> vector&lt;Real&gt; getaddFlux(Integer Number)
+</PRE>
+
+<P>
+Get an additional parameter spectrum
+
+<P>
+</LI>
+<LI><PRE> string disp()
+</PRE>
+
+<P>
+Display information about the table spectrum - return as a string.
+
+<P>
+</LI>
+<LI><PRE> void clear()
+</PRE>
+
+<P>
+Clear contents of the table spectrum
+
+<P>
+</LI>
+</UL>
+
+<P>
+Finally, the class for the complete table:
+
+<P>
+<PRE>
+class table{
+ public:
+
+  vector &lt;tableParameter&gt; Parameters; // Parameter information
+  vector &lt;tableSpectrum&gt; Spectra;     // Tabulated model spectra
+  string ModelName;                   // Name to use in xspec
+  string ModelUnits;                  // Units (not used at present)
+  int NumIntParams;                   // Dimension of interpolation grid
+  int NumAddParams;                   // Number of additional parameters
+  bool isError;                       // If true then model errors included
+  bool isRedshift;                    // If true include redshift
+  bool isAdditive;                    // If true model is additive
+  vector&lt;Real&gt; Energies;              // Energy bins on which model is calculated
+                                      // The size should be one larger than that
+                                      // of the spectrum array
+  string EnergyUnits;                 // Units of energy bins
+  Real LowEnergyLimit;                // Value to use for energies
+                                      // below those tabulated
+  Real HighEnergyLimi;                // Value to use for energies
+                                      // above those tabulated
+  string Filename;                    // Name of file from which table was read
+</PRE>
+
+<P>
+and its public methods:
+
+<P>
+
+<UL>
+<LI><PRE> Integer read(string filename)
+</PRE>
+         <PRE> Integer read(string filename, bool loadAll)
+</PRE>
+
+<P>
+Read the table model object from filename. If loadAll is 
+            false then don't actually read in the Spectra but set up
+            the objects.
+
+<P>
+</LI>
+<LI><PRE> template &lt;class T&gt; Integer readSpectra(T&amp; spectrumList)
+</PRE>
+
+<P>
+Read in the listed Spectra if they have not already been.
+            The class T can be vector<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&lt;$">Integer<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$&gt;$">, valarray<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&lt;$">Integer<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$&gt;$">,
+            vector<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&lt;$">size_t<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$&gt;$">, or valarray<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&lt;$">size_t<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$&gt;$">.
+
+<P>
+</LI>
+<LI><PRE> void pushParameter(tableParameter paramObject)
+</PRE>
+
+<P>
+Push a table Parameter object
+
+<P>
+</LI>
+<LI><PRE> void pushSpectrum(tableSpectrum spectrumObject)
+</PRE>
+
+<P>
+Push a table spectrum object
+
+<P>
+</LI>
+<LI><PRE> tableParameter getParameter(Integer Number)
+</PRE>
+
+<P>
+Get a table Parameter object
+
+<P>
+</LI>
+<LI><PRE> tableSpectrum getSpectrum(Integer Number)
+</PRE>
+
+<P>
+Get a table Spectrum object
+
+<P>
+</LI>
+<LI><PRE> string disp()
+</PRE>
+
+<P>
+Display information about the table - return as a string.
+
+<P>
+</LI>
+<LI><PRE> void clear()
+</PRE>
+
+<P>
+Clear contents of the table
+
+<P>
+</LI>
+<LI><PRE> string check()
+</PRE>
+
+<P>
+Check completeness and consistency of information in table,
+            if there is a problem then return diagnostic in string.
+
+<P>
+</LI>
+<LI><PRE> Integer convertUnits()
+</PRE>
+
+<P>
+Convert the table to standard units (keV and ph/cm<IMG
+ WIDTH="12" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^2$">/s).
+
+<P>
+</LI>
+<LI><PRE> void reverseRows()
+</PRE>
+
+<P>
+Reverse the spectra if energies are not increasing (this
+            can occur after using convertUnits to convert from wavelength).
+
+<P>
+</LI>
+<LI><PRE> write(string filename)
+</PRE>
+
+<P>
+Write to a FITS file
+
+<P>
+</LI>
+<LI><PRE> template &lt;class T&gt; Integer getValues(const T&amp; parameterValues, 
+         const Real minEnergy, const Real maxEnergy, 
+         T&amp; tableEnergyBins, T&amp; tableValues, T&amp; tableErrors)
+</PRE>
+
+<P>
+Interpolate on the table using the input parameters in 
+            parameterValues and return the resulting spectrum between
+            the input minimum and maximum energies. The actual
+            energies on which the spectrum is evaluated are returned
+            in tableEnergyBins with the spectrum values as tableValues
+            and, if included, their errors as tableErrors. The class T
+            can be either vector<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&lt;$">Real<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$&gt;$"> or valarray<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&lt;$">Real<IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$&gt;$">.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html593"
+  HREF="node34.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html589"
+  HREF="node31.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html585"
+  HREF="node32.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html591"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html594"
+  HREF="node34.html">Grouping</A>
+<B> Up:</B> <A NAME="tex2html590"
+  HREF="node31.html">Table Models</A>
+<B> Previous:</B> <A NAME="tex2html586"
+  HREF="node32.html">Introduction and example</A>
+ &nbsp; <B>  <A NAME="tex2html592"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

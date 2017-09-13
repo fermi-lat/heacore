@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>rmf</TITLE>
+<META NAME="description" CONTENT="rmf">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node75.html">
+<LINK REL="previous" HREF="node73.html">
+<LINK REL="up" HREF="node71.html">
+<LINK REL="next" HREF="node75.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1122"
+  HREF="node75.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1118"
+  HREF="node71.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1112"
+  HREF="node73.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1120"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html1123"
+  HREF="node75.html">table</A>
+<B> Up:</B> <A NAME="tex2html1119"
+  HREF="node71.html">v1.01</A>
+<B> Previous:</B> <A NAME="tex2html1113"
+  HREF="node73.html">pha, phaII</A>
+ &nbsp; <B>  <A NAME="tex2html1121"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00943000000000000000">
+rmf</A>
+</H2>
+
+<P>
+
+<UL>
+<LI>Replaced the compressLine function with the rmf::addRow
+  method. Added the reverseRows method to use in cases where the
+  original energy bins are not in increasing order. Added
+  calcGaussResp function to calculate the gaussian response for one
+  row of a response matrix.
+
+<P>
+</LI>
+<LI>Added rmf::clearMatrix method to wipe only the response matrix
+  part of the rmf object.
+
+<P>
+</LI>
+<LI>Added rmf::shiftChannels to shift channels.
+
+<P>
+</LI>
+<LI>Added support for grating orders to the rmf class.
+
+<P>
+</LI>
+<LI>Corrected error in rmf when reading a file with MATRIX as a
+  fixed length vector column.
+
+<P>
+</LI>
+<LI>Fixed a counting from 0 or 1 bug in rmf::RowValues.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

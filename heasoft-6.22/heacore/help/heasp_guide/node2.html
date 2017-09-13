@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="heasp_guide.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html175"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html171"
+  HREF="heasp_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html165"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html173"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html176"
+  HREF="node3.html">Python module</A>
+<B> Up:</B> <A NAME="tex2html172"
+  HREF="heasp_guide.html">heasp_guide</A>
+<B> Previous:</B> <A NAME="tex2html166"
+  HREF="node1.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html174"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00200000000000000000">
+Introduction</A>
+</H1>
+
+<P>
+HEASP is a C/C++/Python library to manipulate files associated with
+high energy astrophysics spectroscopic analysis. Currently this
+handles PHA, RMF, ARF and xspec table model files. The eventual plan 
+is to be able to provide at least the functionality available in 
+current ftools but from a single library.
+
+<P>
+The main code is written in C++ with classes for each file type. These
+classes and associated methods have been run through SWIG to produce
+Python code. C wrappers are provided for many of the C++ methods
+allowing simple use from C programs.
+
+<P>
+These C wrappers are compatible
+with an earlier C only version of HEASP with two exceptions: a) the
+include file required is now Cheasp.h instead of heasp.h; b) all
+routines which used to require a FITS file pointer now just require
+the filename. One consequence of b) is that files no longer need to be
+opened and closed by the calling program.
+
+<P>
+There are separate chapters describing the Python, C++, and C
+interfaces although users of Python should consult the C++ chapter for
+description of the classes.
+
+<P>
+Highlights of HEASP are :
+
+<UL>
+<LI>Read and write spectra, responses, arfs and table model files.
+
+<P>
+</LI>
+<LI>Rebin spectra using grouping arrays.
+
+<P>
+</LI>
+<LI>Compress responses by removing all elements below some
+  value. Rebin responses in either energy or channel space based on a
+  grouping array.
+
+<P>
+</LI>
+<LI>Use a response to generate random channel numbers for a photon
+  of a given energy.
+
+<P>
+</LI>
+<LI>Sum both rmfs and arfs and multiply rmfs by arfs.
+
+<P>
+</LI>
+<LI>Construct type II PHA or ARF from sets of spectra or arfs. Also
+  extract individual spectra or arfs from type II files.
+
+<P>
+</LI>
+</UL>
+
+<P>
+The latest version (1.10) changes the definition of the Real type from
+float to double for consistency with its use in the xspec code however
+most FITS data read by these routines are single-precision.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html175"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html171"
+  HREF="heasp_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html165"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html173"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html176"
+  HREF="node3.html">Python module</A>
+<B> Up:</B> <A NAME="tex2html172"
+  HREF="heasp_guide.html">heasp_guide</A>
+<B> Previous:</B> <A NAME="tex2html166"
+  HREF="node1.html">Contents</A>
+ &nbsp; <B>  <A NAME="tex2html174"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

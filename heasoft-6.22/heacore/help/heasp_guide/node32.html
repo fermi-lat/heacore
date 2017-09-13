@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction and example</TITLE>
+<META NAME="description" CONTENT="Introduction and example">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node33.html">
+<LINK REL="previous" HREF="node31.html">
+<LINK REL="up" HREF="node31.html">
+<LINK REL="next" HREF="node33.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html583"
+  HREF="node33.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html579"
+  HREF="node31.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html573"
+  HREF="node31.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html581"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html584"
+  HREF="node33.html">table classes</A>
+<B> Up:</B> <A NAME="tex2html580"
+  HREF="node31.html">Table Models</A>
+<B> Previous:</B> <A NAME="tex2html574"
+  HREF="node31.html">Table Models</A>
+ &nbsp; <B>  <A NAME="tex2html582"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00441000000000000000">
+Introduction and example</A>
+</H2>
+
+<P>
+The table model file is used in xspec to provide grids of model
+calculations on which to interpolate when fitting a model to data. The
+table class can be used to create these files. The example code below
+sets up a grid with two parameters.
+
+<P>
+<PRE>
+#include "table.h"
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+
+  table test;
+
+  // set table descriptors and the energy array
+
+  test.ModelName = "Test";
+  test.ModelUnits = " ";
+  test.isRedshift = true;
+  test.isAdditive = true;
+  test.isError = false;
+
+  test.Energies.resize(100);
+  for (size_t i=0; i&lt;100; i++) test.Energies[i] = 0.1+i*0.1;
+  test.EnergyUnits = "keV";
+
+  test.NumIntParams = 2;
+  test.NumAddParams = 1;
+
+
+  // define first parameter and give it 11 values ranging from
+  // 0.0 to 2.0 in steps of 0.2.
+
+  tableParameter testpar;
+
+  testpar.Name = "param1";
+  testpar.InterpolationMethod = 0;
+  testpar.InitialValue = 1.0;
+  testpar.Delta = 0.1;
+  testpar.Minimum = 0.0;
+  testpar.Bottom = 0.0;
+  testpar.Top = 2.0;
+  testpar.Maximum = 2.0;
+
+  testpar.TabulatedValues.resize(11);
+  for (size_t i=0; i&lt;11; i++) testpar.TabulatedValues[i] = 0.2*i;
+
+  // and push it onto the vector of parameters
+
+  test.Parameters.push_back(testpar);
+
+  // define the second parameter and give it 5 values ranging from
+  // 4.6 to 5.4 in steps of 0.2.
+
+
+  testpar.Name = "param2";
+  testpar.InterpolationMethod = 0;
+  testpar.InitialValue = 5.0;
+  testpar.Delta = 0.1;
+  testpar.Minimum = 4.6;
+  testpar.Bottom = 4.6;
+  testpar.Top = 5.4;
+  testpar.Maximum = 5.4;
+
+  testpar.TabulatedValues.resize(5);
+  for (size_t i=0; i&lt;5; i++) testpar.TabulatedValues[i] = 4.6+0.2*i;
+
+  // and push it onto the vector of parameters
+
+  test.Parameters.push_back(testpar);
+
+  // define an additional parameter (usually the elemental abundance)
+  // does not require tabulated values.
+
+  testpar.Name = "addparam";
+  testpar.InterpolationMethod = -1;
+  testpar.InitialValue = 0.0;
+  testpar.Delta = 0.1;
+  testpar.Minimum = 0.0;
+  testpar.Bottom = 0.0;
+  testpar.Top = 5.0;
+  testpar.Maximum = 5.0;
+  testpar.TabulatedValues.resize(0);
+
+  // and push it onto the vector of parameters
+
+  test.Parameters.push_back(testpar);
+
+  // now set up the spectra. these are arbitrarily calculated, in a real program 
+  // this step would read a file or call a routine.
+
+  tableSpectrum testspec;
+
+  testspec.Flux.resize(99);
+  testspec.ParameterValues.resize(2);
+
+  vector&lt;Real&gt; addFlux(99);
+
+  for (size_t i1=0; i1&lt;11; i1++) {
+    for (size_t i2=0; i2&lt;5; i2++) {
+      testspec.ParameterValues[0] = 0.2*i1;
+      testspec.ParameterValues[1] = 4.6+0.2*i2;
+      for (size_t j=0; j&lt;99; j++) {
+	testspec.Flux[j] = testspec.ParameterValues[0]+10*testspec.ParameterValues[1];
+	addFlux[j] = 1.0*(i1+1)*(i2+1);
+      }
+      testspec.addFlux.push_back(addFlux);
+      test.Spectra.push_back(testspec);
+      testspec.addFlux.clear();
+    }
+  }
+
+  // now write out the table.
+
+  test.write("test.mod");
+
+  exit(0);
+}
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

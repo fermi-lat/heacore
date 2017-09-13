@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Getting started</TITLE>
+<META NAME="description" CONTENT="Getting started">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="node3.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html204"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html200"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html194"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html202"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html205"
+  HREF="node5.html">HEASP features not (yet)</A>
+<B> Up:</B> <A NAME="tex2html201"
+  HREF="node3.html">Python module</A>
+<B> Previous:</B> <A NAME="tex2html195"
+  HREF="node3.html">Python module</A>
+ &nbsp; <B>  <A NAME="tex2html203"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00310000000000000000">
+Getting started</A>
+</H1>
+
+<P>
+The standard HEAsoft build makes a Python module based on the HEASP
+C++ classes described in the next chapter. The standard HEAsoft
+initialization script adds the location of the HEASP Python module to
+PYTHONPATH. To load the module use
+<PRE>
+UNIX&gt; python
+&gt;&gt;&gt;from heasp import *
+</PRE>
+If this produces name conflicts then loading the module by
+<PRE>
+UNIX&gt; python
+&gt;&gt;&gt;import heasp
+</PRE>
+requires heasp. in front of all commands.
+
+<P>
+To set up an HEASP object first give a simple command such as
+<PRE>
+&gt;&gt;&gt;sp = pha()
+</PRE>
+for a spectrum. This can then be read in and information about it
+displayed by
+<PRE>
+&gt;&gt;&gt;sp.read("file1.pha")
+&gt;&gt;&gt;sp.disp()
+</PRE>
+Individual components of the object can be used by adding the
+component name to the object name without ``()''. For instance:
+<PRE>
+&gt;&gt;&gt;first = sp.FirstChannel
+</PRE>
+will place the first channel number in the variable first. The
+components of each class are given in the C++ chapter.
+
+<P>
+Components which are arrays can be used only through their individual
+element numbers. For instance:
+<PRE>
+&gt;&gt;&gt;counts = []
+&gt;&gt;&gt;for i in xrange(sp.NumberChannels()):
+...   counts.append(sp.Pha[i])
+</PRE>
+will place the contents of the PHA column in the list called
+counts. Going the other way, the current contents of the PHA column
+can be replaced by those in the counts list by:
+<PRE>
+&gt;&gt;&gt;for i in xrange(sp.NumberChannels()):
+...   sp.Pha[i] = counts[i]
+</PRE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html204"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html200"
+  HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html194"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html202"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html205"
+  HREF="node5.html">HEASP features not (yet)</A>
+<B> Up:</B> <A NAME="tex2html201"
+  HREF="node3.html">Python module</A>
+<B> Previous:</B> <A NAME="tex2html195"
+  HREF="node3.html">Python module</A>
+ &nbsp; <B>  <A NAME="tex2html203"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

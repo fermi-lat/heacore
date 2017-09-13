@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>rmft class</TITLE>
+<META NAME="description" CONTENT="rmft class">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node24.html">
+<LINK REL="previous" HREF="node22.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node24.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html475"
+  HREF="node24.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html471"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html465"
+  HREF="node22.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html473"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html476"
+  HREF="node24.html">rmft class public methods</A>
+<B> Up:</B> <A NAME="tex2html472"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html466"
+  HREF="node22.html">Other rmf routines</A>
+ &nbsp; <B>  <A NAME="tex2html474"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00435000000000000000">
+rmft class</A>
+</H2>
+
+<P>
+<PRE>
+class rmft{
+ public:
+
+  Integer FirstChannel;                // First channel number 
+
+  vector&lt;Integer&gt; NumberGroups;        // Number of response groups for this 
+                                       // channel bin 
+  vector&lt;Integer&gt; FirstGroup;          // First response group for this channel
+                                       // bin (counts from 0)
+
+  vector&lt;Integer&gt; FirstEnergyGroup;    // First energy bin in this group 
+  vector&lt;Integer&gt; NumberEnergiesGroup; // Number of energy bins in this group 
+  vector&lt;Integer&gt; FirstElement;        // First response element for this group
+                                       // (counts from 0)
+  vector&lt;Integer&gt; OrderGroup;          // The grating order of this group 
+
+  vector&lt;Real&gt; LowEnergy;              // Start energy of bin 
+  vector&lt;Real&gt; HighEnergy;             // End energy of bin 
+
+  vector&lt;Real&gt; Matrix;                 // Matrix elements 
+
+  vector&lt;Real&gt; ChannelLowEnergy;       // Start energy of channel 
+  vector&lt;Real&gt; ChannelHighEnergy;      // End energy of channel 
+
+  Real AreaScaling;                    // Value of EFFAREA keyword 
+  Real ResponseThreshold;              // Minimum value in response 
+
+  string EnergyUnits;                  // Energy units
+  string RMFUnits;                     // RMF units
+
+  string ChannelType;                  // Value of CHANTYPE keyword 
+  string RMFVersion;                   // MATRIX extension format version 
+  string EBDVersion;                   // EBOUNDS extension format version 
+  string Telescope;                             
+  string Instrument;
+  string Detector;
+  string Filter;
+  string RMFType;                      // HDUCLAS3 keyword in MATRIX extension 
+  string RMFExtensionName;             // EXTNAME keyword in MATRIX extension 
+  string EBDExtensionName;             // EXTNAME keyword in EBOUNDS extension
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

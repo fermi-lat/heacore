@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>arf class public methods</TITLE>
+<META NAME="description" CONTENT="arf class public methods">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node27.html">
+<LINK REL="previous" HREF="node25.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node27.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html511"
+  HREF="node27.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html507"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html501"
+  HREF="node25.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html509"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html512"
+  HREF="node27.html">Other arf routines</A>
+<B> Up:</B> <A NAME="tex2html508"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html502"
+  HREF="node25.html">arf class</A>
+ &nbsp; <B>  <A NAME="tex2html510"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00438000000000000000">
+arf class public methods</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE>   Integer read(string filename)
+</PRE>
+       <PRE>   Integer read(string filename, Integer ARFnumber)
+</PRE>
+       <PRE>   Integer read(string filename, Integer ARFnumber,
+       Integer RowNumber)
+</PRE>
+
+<P>
+Read file into an object. If ARFnumber is given read from
+          the SPECRESP extension with EXTVER=ARFnumber. The third
+          option is to read an arf from the RowNumber row of a 
+          type II file.
+
+<P>
+</LI>
+<LI><PRE>  arf&amp; operator= (const arf&amp;)
+</PRE>
+
+<P>
+Deep copy.
+
+<P>
+</LI>
+<LI><PRE>  Integer NumberEnergyBins()
+</PRE>
+
+<P>
+Return size of vector&lt;Real&gt;s.
+
+<P>
+</LI>
+<LI><PRE>  string disp()
+</PRE>
+
+<P>
+Display information about the arf. - return as a string.
+
+<P>
+</LI>
+<LI><PRE>  void clear()
+</PRE>
+
+<P>
+Clear information from the arf.
+
+<P>
+</LI>
+<LI><PRE>  string check()
+</PRE>
+
+<P>
+Check completeness and consistency of information in the arf,
+          if there is a problem then return diagnostic in string.
+
+<P>
+</LI>
+<LI><PRE> rebin(grouping&amp;)
+</PRE>
+
+<P>
+Rebin the arf using the input grouping.
+
+<P>
+</LI>
+<LI><PRE> Integer write(string filename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename, Integer HDUnumber)
+</PRE>
+
+<P>
+Write arf as type I file. If copyfilename is given then
+          copy from it other HDUs and other keywords in the SPECRESP
+          extension. If HDUnumber is specified then use the SPECRESP
+          extension with EXTVER=HDUnumber in copyfilename. Note that 
+          if the output filename exists and already has a SPECRESP 
+          extension then these methods will write an
+          additional SPECRESP extension.
+
+<P>
+</LI>
+<LI><PRE>  arf&amp; operator*=(const Real&amp;)
+</PRE>
+
+<P>
+Multiply by a constant.
+
+<P>
+</LI>
+<LI><PRE>  arf&amp; operator+=(const arf&amp;)
+</PRE>
+
+<P>
+Add another arf.
+
+<P>
+</LI>
+<LI><PRE>  Integer checkCompatibility(const arf&amp;)
+</PRE>
+
+<P>
+Check compatibility with another arf.
+
+<P>
+</LI>
+<LI><PRE> Integer convertUnits()
+</PRE>
+
+<P>
+Convert the energies on which the arf is calculated from the
+          current units to keV. The allowed units are keV, MeV, GeV, Hz,
+          angstrom, cm, micron, nm.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html511"
+  HREF="node27.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html507"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html501"
+  HREF="node25.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html509"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html512"
+  HREF="node27.html">Other arf routines</A>
+<B> Up:</B> <A NAME="tex2html508"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html502"
+  HREF="node25.html">arf class</A>
+ &nbsp; <B>  <A NAME="tex2html510"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

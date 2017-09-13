@@ -1,0 +1,509 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>rmf class public methods</TITLE>
+<META NAME="description" CONTENT="rmf class public methods">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node22.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html451"
+  HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html447"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html441"
+  HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html449"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html452"
+  HREF="node22.html">Other rmf routines</A>
+<B> Up:</B> <A NAME="tex2html448"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html442"
+  HREF="node20.html">rmf class</A>
+ &nbsp; <B>  <A NAME="tex2html450"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00433000000000000000">
+rmf class public methods</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE> Integer read(string filename)
+</PRE>
+       <PRE> Integer read(string filename, Integer RMFnumber)
+</PRE>
+
+<P>
+Read the RMF file into an object. If RMFnumber is given read
+          from the MATRIX (or SPECRESP MATRIX) and EBOUNDS extensions 
+          with EXTVER=RMFnumber. If there is only one EBOUNDS
+          extension then that will be used.
+
+<P>
+</LI>
+<LI><PRE> Integer readMatrix(string filename)
+</PRE>
+       <PRE> Integer readMatrix(string filename, Integer RMFnumber)
+</PRE>
+
+<P>
+Read the MATRIX (or SPECRESP MATRIX) extension from an RMF 
+          file into an object. If RMFnumber is given read from the 
+          MATRIX (or SPECRESP MATRIX) extension with EXTVER=RMFnumber. 
+
+<P>
+</LI>
+<LI><PRE> Integer readChannelBounds(string filename)
+</PRE>
+       <PRE> Integer readChannelBounds(string filename, Integer RMFnumber)
+</PRE>
+
+<P>
+Read the EBOUNDS extension from an RMF file into an object. 
+          If RMFnumber is given read from the EBOUNDS extension with 
+          EXTVER=RMFnumber. 
+
+<P>
+</LI>
+<LI><PRE> void update()
+</PRE>
+
+<P>
+Update the FirstGroup and FirstElement arrays from
+          NumberGroups and NumberChannelsGroup, respectively.
+
+<P>
+</LI>
+<LI><PRE> void initialize(const arf&amp;)
+</PRE>
+
+<P>
+Initialize from an arf object. Copies members in common between arfs and rmfs
+
+<P>
+</LI>
+<LI><PRE> rmf&amp; operator= (const rmf&amp;)
+</PRE>  
+
+<P>
+Deep copy.
+
+<P>
+</LI>
+<LI><PRE> Integer NumberChannels()
+</PRE>
+
+<P>
+Return the number of spectrum channels.
+
+<P>
+</LI>
+<LI><PRE> Integer NumberEnergyBins()
+</PRE>
+
+<P>
+Return the number of response energies. 
+
+<P>
+</LI>
+<LI><PRE> Integer NumberTotalGroups()
+</PRE>
+
+<P>
+Return the number of response groups. 
+
+<P>
+</LI>
+<LI><PRE> Integer NumberTotalElements()
+</PRE>
+
+<P>
+Return the number of response elements. 
+
+<P>
+</LI>
+<LI><PRE> Real ElementValue(Integer Channel, Integer EnergyBin)
+</PRE>
+       <PRE> Real ElementValue(Integer Channel, Integer EnergyBin,
+       Integer GratingOrder)
+</PRE>
+
+<P>
+Return the value for a particular channel, energy, and
+          grating order.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;Real&gt; RowValues(Integer EnergyBin)
+</PRE>
+       <PRE> vector&lt;Real&gt; RowValues(Integer EnergyBin,
+       Integer GratingOrder)
+</PRE>
+
+<P>
+Return the response array for a particular energy and
+          grating order.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;Integer&gt; RandomChannels(const Real energy, 
+       const Integer NumberPhotons)
+</PRE>
+       <PRE> vector&lt;Integer&gt; RandomChannels(const vector&lt;Real&gt;&amp; energy, 
+       const vector&lt;Integer&gt;&amp; NumberPhotons)
+</PRE>
+       <PRE> vector&lt;Integer&gt; RandomChannels(const Real energy, 
+       const Integer NumberPhotons, Integer GratingOrder)
+</PRE>
+       <PRE> vector&lt;Integer&gt; RandomChannels(const vector&lt;Real&gt;&amp; energy, 
+       const vector&lt;Integer&gt;&amp; NumberPhotons, Integer GratingOrder)
+</PRE>
+
+<P>
+Use the response matrix to generate random channel numbers 
+          for photons of given energy and grating order. For each
+          energy, NumberPhotons are generated.
+
+<P>
+</LI>
+<LI><PRE> string disp()
+</PRE>
+
+<P>
+Display information about the response. - return as a string.
+
+<P>
+</LI>
+<LI><PRE> void clear()
+</PRE>
+
+<P>
+Clear information from the response.
+
+<P>
+</LI>
+<LI><PRE> void clearMatrix()
+</PRE>
+
+<P>
+Clear only the matrix information from the response.
+
+<P>
+</LI>
+<LI><PRE> string check()
+</PRE>
+
+<P>
+Check completeness and consistency of information in the rmf,
+          if there is a problem then return diagnostic in string.
+
+<P>
+</LI>
+<LI><PRE> void normalize()
+</PRE>
+
+<P>
+Normalize the rmf so it sums to 1.0 for each energy bin.
+
+<P>
+</LI>
+<LI><PRE> void compress(const Real threshold)
+</PRE>
+
+<P>
+Compress the rmf to remove all elements below the threshold value.
+
+<P>
+</LI>
+<LI><PRE> void uncompress()
+</PRE>
+
+<P>
+Uncompress the rmf i.e. turn it into a full rectangular matrix.
+
+<P>
+</LI>
+<LI><PRE> Integer rebinChannels(grouping&amp;)
+</PRE>
+
+<P>
+Rebin in channel space using the specified grouping object.
+
+<P>
+</LI>
+<LI><PRE> Integer rebinEnergies(grouping&amp;)
+</PRE>
+
+<P>
+Rebin in energy space using the specified grouping object.
+
+<P>
+</LI>
+<LI><PRE> Integer shiftChannels(const Integer Start,
+       const Integer End, const Real Shift)
+</PRE>
+       <PRE> Integer shiftChannels(const Integer Start, 
+       const Integer End, const Real Shift, const Real Factor, 
+       bool useEnergyBounds)
+</PRE>
+       <PRE> Integer shiftChannels(const vector&lt;Integer&gt;&amp; vStart,
+       const vector&lt;Integer&gt;&amp; vEnd, const vector&lt;Real&gt;&amp; vShift, 
+       const vector&lt;Real&gt;&amp; vFactor, bool useEnergyBounds)
+</PRE>
+       <PRE> Integer shiftEnergies(const Integer Start, 
+       const Integer End, const Real Shift, const Real Factor)
+</PRE>
+       <PRE> Integer shiftEnergies(const vector&lt;Integer&gt;&amp; vStart,
+       const vector&lt;Integer&gt;&amp; vEnd, const vector&lt;Real&gt;&amp; vShift, 
+       const vector&lt;Real&gt;&amp; vFactor)
+</PRE>
+
+<P>
+Remap the response up or down in channels. Moves response
+          between channels Start and End by Shift channels and
+          stretches by Factor. If useEnergyBounds is true then Shift
+          is assumed to be in energy, otherwise in channels.
+
+<P>
+</LI>
+<LI><PRE> Integer interpolateAndMultiply(const vector&lt;Real&gt;&amp; energies, 
+       const vector&lt;Real&gt;&amp; factors)
+</PRE>
+
+<P>
+Multiply by a vector which may not have the same energy
+          binning as the response.
+
+<P>
+</LI>
+<LI><PRE> Integer write(string filename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename, Integer HDUnumber)
+</PRE>
+
+<P>
+Write response to a RMF file. If copyfilename is given then
+          copy from it other HDUs and other keywords in the MATRIX and
+          EBOUNDS extensions. If HDUnumber is specified then use the
+          MATRIX and EBOUNDS extensions with EXTVER=HDUnumber in
+          copyfilename. Note that if the output filename exists and 
+          already has MATRIX and EBOUNDS extensions then these methods 
+          will write additional extensions.
+
+<P>
+</LI>
+<LI><PRE> Integer writeMatrix(string filename)
+</PRE>
+       <PRE> Integer writeMatrix(string filename, string copyfilename)
+</PRE>
+       <PRE> Integer writeMatrix(string filename, string copyfilename,
+       Integer HDUnumber)
+</PRE>
+
+<P>
+Write the MATRIX extension to a RMF file. If copyfilename is 
+          given then copy from it other HDUs and other keywords in the 
+          MATRIX extension. If HDUnumber is specified then use the
+          MATRIX extension with EXTVER=HDUnumber in copyfilename. Note 
+          that if the output filename exists and already has a MATRIX 
+          extension then these methods will write an additional extension.
+
+<P>
+</LI>
+<LI><PRE> Integer writeChannelBounds(string filename)
+</PRE>
+       <PRE> Integer writeChannelBounds(string filename, string copyfilename)
+</PRE>
+       <PRE> Integer writeChannelBounds(string filename, string copyfilename,
+       Integer HDUnumber)
+</PRE>
+
+<P>
+Write the EBOUNDS extension to a RMF file. If copyfilename is 
+          given then copy from it other HDUs and other keywords in the 
+          EBOUNDS extension. If HDUnumber is specified then use the
+          EBOUNDS extension with EXTVER=HDUnumber in copyfilename. Note 
+          that if the output filename exists and already has a EBOUNDS 
+          extension then these methods will write an additional extension.
+
+<P>
+</LI>
+<LI><PRE> rmf&amp; operator*=(const arf&amp;)
+</PRE>
+
+<P>
+Multiply current rmf by an arf.
+
+<P>
+</LI>
+<LI><PRE> rmf&amp; operator*=(const Real&amp;)
+</PRE>
+
+<P>
+Multiply current rmf by a factor.
+
+<P>
+</LI>
+<LI><PRE> rmf&amp; operator+=(const rmf&amp;)
+</PRE>
+
+<P>
+Add another rmf to the current rmf.
+
+<P>
+</LI>
+<LI><PRE> Integer checkCompatibility(const rmf&amp;)
+</PRE>
+
+<P>
+Check compatibility with another rmf.
+
+<P>
+</LI>
+<LI><PRE> Integer checkCompatibility(const arf&amp;)
+</PRE>
+
+<P>
+Check compatibility with an arf.
+
+<P>
+</LI>
+<LI><PRE> Integer convertUnits()
+</PRE>
+
+<P>
+Convert energy units from current units to keV. Valid
+          options for the current units are keV, MeV, GeV, Hz,
+          angstrom, cm, micron, nm.
+
+<P>
+</LI>
+<LI><PRE> void reverseRows()
+</PRE>  
+
+<P>
+Reverse the rows. This is useful if the rows are not in
+          increasing order of energy, which xspec requires.
+
+<P>
+</LI>
+<LI><PRE> void addRow(const vector&lt;Real&gt; Response, 
+       const Real eLow, const Real eHigh)
+</PRE>
+       <PRE> void addRow(const vector&lt;vector&lt;Real&gt; &gt; Response, const Real eLow, 
+       const Real eHigh, const vector&lt;Integer&gt; GratingOrder)
+</PRE>
+
+<P>
+Add a row to the response using an input response vector and energy range.
+
+<P>
+</LI>
+<LI><PRE> void substituteRow(const Integer RowNumber, 
+       const vector&lt;Real&gt; Response)
+</PRE>
+       <PRE> void substituteRow(const Integer RowNumber, 
+       const vector&lt;vector&lt;Real&gt; &gt; Response, 
+       const vector&lt;Integer&gt; GratingOrder)
+</PRE>
+
+<P>
+Substitute a row into the response using an input response 
+          vector and energy range.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;Real&gt; multiplyByModel(const vector&lt;Real&gt;&amp; model)
+</PRE>
+
+<P>
+Multiply a response by a vector and output a vector of pha
+          values. The input vector is assumed to be on the energy binning.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;Real&gt; estimatedFWHM()
+</PRE>
+
+<P>
+Return a vector containing the FWHM in channels for each 
+          energy. This does assume that the response has a 
+          well-defined main peak.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html451"
+  HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html447"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html441"
+  HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html449"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html452"
+  HREF="node22.html">Other rmf routines</A>
+<B> Up:</B> <A NAME="tex2html448"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html442"
+  HREF="node20.html">rmf class</A>
+ &nbsp; <B>  <A NAME="tex2html450"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

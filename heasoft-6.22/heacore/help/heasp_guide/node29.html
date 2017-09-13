@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>arfII class public methods</TITLE>
+<META NAME="description" CONTENT="arfII class public methods">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node30.html">
+<LINK REL="previous" HREF="node28.html">
+<LINK REL="up" HREF="node18.html">
+<LINK REL="next" HREF="node30.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html547"
+  HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html543"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html537"
+  HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html545"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html548"
+  HREF="node30.html">Other arfII routines</A>
+<B> Up:</B> <A NAME="tex2html544"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html538"
+  HREF="node28.html">arfII class</A>
+ &nbsp; <B>  <A NAME="tex2html546"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION004311000000000000000">
+arfII class public methods</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE> Integer read(string filename)
+</PRE>
+       <PRE> Integer read(string filename, Integer ARFnumber)
+</PRE>
+       <PRE> Integer read(string filename, Integer ARFnumber, 
+       vector&lt;Integer&gt; RowNumber)
+</PRE>
+
+<P>
+Read an ARF type II file into an object. If ARFnumber is
+           given then read from the SPECRESP extension with EXTVER=ARFnumber.
+           If the RowNumber array is given then read those in the 
+           extension otherwise read all the arfs.
+
+<P>
+</LI>
+<LI><PRE> arfII&amp; operator= (const arfII&amp;)
+</PRE>
+
+<P>
+Deep copy.
+
+<P>
+</LI>
+<LI><PRE> arf get(Integer number)
+</PRE>
+
+<P>
+Get arf object (counts from zero).
+
+<P>
+</LI>
+<LI><PRE> void push(arf ea)
+</PRE>
+
+<P>
+Push arf object into arfII object
+
+<P>
+</LI>
+<LI><PRE> Integer NumberARFs()
+</PRE>
+
+<P>
+Return the number of ARFs in the object.
+
+<P>
+</LI>
+<LI><PRE> string disp()
+</PRE>
+
+<P>
+Display information about the ARFs. - return as a string.
+
+<P>
+</LI>
+<LI><PRE> void clear()
+</PRE>
+
+<P>
+Clear information from the ARFs.
+
+<P>
+</LI>
+<LI><PRE> string check()
+</PRE>
+
+<P>
+Check completeness and consistency of information in the arfs,
+           if there is a problem then return diagnostic in string.
+
+<P>
+</LI>
+<LI><PRE> Integer write(string filename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename)
+</PRE>
+       <PRE> Integer write(string filename, string copyfilename,
+       Integer HDUnumber)
+</PRE>
+
+<P>
+Write ARFs as type II file. If copyfilename is given then
+          copy from it other HDUs and other keywords in the SPECRESP
+          extension. If HDUnumber is specified then use the SPECRESP
+          extension with EXTVER=HDUnumber in copyfilename. Note that 
+          if the output filename exists and already has a SPECRESP 
+          extension then these methods will write an additional 
+          SPECRESP extension.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html547"
+  HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html543"
+  HREF="node18.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html537"
+  HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html545"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html548"
+  HREF="node30.html">Other arfII routines</A>
+<B> Up:</B> <A NAME="tex2html544"
+  HREF="node18.html">Responses</A>
+<B> Previous:</B> <A NAME="tex2html538"
+  HREF="node28.html">arfII class</A>
+ &nbsp; <B>  <A NAME="tex2html546"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

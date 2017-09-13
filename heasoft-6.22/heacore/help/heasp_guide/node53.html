@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Ftools and Heasp</TITLE>
+<META NAME="description" CONTENT="Ftools and Heasp">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="next" HREF="node54.html">
+<LINK REL="previous" HREF="node52.html">
+<LINK REL="up" HREF="heasp_guide.html">
+<LINK REL="next" HREF="node54.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html842"
+  HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html838"
+  HREF="heasp_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html832"
+  HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html840"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html843"
+  HREF="node54.html">Error Codes</A>
+<B> Up:</B> <A NAME="tex2html839"
+  HREF="heasp_guide.html">heasp_guide</A>
+<B> Previous:</B> <A NAME="tex2html833"
+  HREF="node52.html">Building programs using heasp</A>
+ &nbsp; <B>  <A NAME="tex2html841"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00700000000000000000">
+Ftools and Heasp</A>
+</H1>
+
+<P>
+The following table lists ftools that operate on spectra or responses
+and the related HEASP routines. The read and write routines apply in
+all cases so are not included in the table. In some, relatively
+simple, cases the ftool equivalent could be performed by directly
+getting and setting class members. 
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+  <TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">Ftool</TD>
+<TD ALIGN="LEFT">corresponding HEASP C++ routines</TD>
+</TR>
+<TR><TD ALIGN="LEFT">addarf</TD>
+<TD ALIGN="LEFT">arf::operator+=, arf::operator+</TD>
+</TR>
+<TR><TD ALIGN="LEFT">addrmf</TD>
+<TD ALIGN="LEFT">rmf::operator+=, rmf::operator+</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cmppha</TD>
+<TD ALIGN="LEFT">phaII::get</TD>
+</TR>
+<TR><TD ALIGN="LEFT">cmprmf</TD>
+<TD ALIGN="LEFT">rmf::compress</TD>
+</TR>
+<TR><TD ALIGN="LEFT">dmprmf</TD>
+<TD ALIGN="LEFT">directly access rmf class members</TD>
+</TR>
+<TR><TD ALIGN="LEFT">gcorpha</TD>
+<TD ALIGN="LEFT">pha::shiftChannels</TD>
+</TR>
+<TR><TD ALIGN="LEFT">gcorrmf</TD>
+<TD ALIGN="LEFT">rmf::shiftChannels</TD>
+</TR>
+<TR><TD ALIGN="LEFT">marfrmf</TD>
+<TD ALIGN="LEFT">rmf::operator*=, rmf::operator*</TD>
+</TR>
+<TR><TD ALIGN="LEFT">rbnrmf</TD>
+<TD ALIGN="LEFT">grouping::load, rmf::rebinChannels, rmf::rebinEnergies</TD>
+</TR>
+<TR><TD ALIGN="LEFT">arf2arf1</TD>
+<TD ALIGN="LEFT">arfII:get</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ascii2pha</TD>
+<TD ALIGN="LEFT">directly set pha class members</TD>
+</TR>
+<TR><TD ALIGN="LEFT">chkarf</TD>
+<TD ALIGN="LEFT">arf::check, arfII::check</TD>
+</TR>
+<TR><TD ALIGN="LEFT">chkpha</TD>
+<TD ALIGN="LEFT">pha::check, phaII::check</TD>
+</TR>
+<TR><TD ALIGN="LEFT">chkrmf</TD>
+<TD ALIGN="LEFT">rmf::check</TD>
+</TR>
+<TR><TD ALIGN="LEFT">flx2xsp</TD>
+<TD ALIGN="LEFT">directly set pha and rmf class members</TD>
+</TR>
+<TR><TD ALIGN="LEFT">flx2tab</TD>
+<TD ALIGN="LEFT">directly set table class members</TD>
+</TR>
+<TR><TD ALIGN="LEFT">grppha</TD>
+<TD ALIGN="LEFT">grouping::load, pha::setGrouping</TD>
+</TR>
+<TR><TD ALIGN="LEFT">grppha2</TD>
+<TD ALIGN="LEFT">phaII::get, grouping::load</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">pha::setGrouping, phaII::push</TD>
+</TR>
+<TR><TD ALIGN="LEFT">mathpha</TD>
+<TD ALIGN="LEFT">pha::operator+=, pha::operator+, pha::operator*=</TD>
+</TR>
+<TR><TD ALIGN="LEFT">mkfiltrsp</TD>
+<TD ALIGN="LEFT">directly set rmf class members</TD>
+</TR>
+<TR><TD ALIGN="LEFT">rbnpha</TD>
+<TD ALIGN="LEFT">grouping::load, pha::setGrouping, pha::rebinChannels</TD>
+</TR>
+<TR><TD ALIGN="LEFT">rsp2rmfarf</TD>
+<TD ALIGN="LEFT">directly get and set rmf and arf class members</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sdss2xsp</TD>
+<TD ALIGN="LEFT">directly set pha and rmf class members</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sprbnarf</TD>
+<TD ALIGN="LEFT">grouping::load, GroupBin</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html842"
+  HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html838"
+  HREF="heasp_guide.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html832"
+  HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html840"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html843"
+  HREF="node54.html">Error Codes</A>
+<B> Up:</B> <A NAME="tex2html839"
+  HREF="heasp_guide.html">heasp_guide</A>
+<B> Previous:</B> <A NAME="tex2html833"
+  HREF="node52.html">Building programs using heasp</A>
+ &nbsp; <B>  <A NAME="tex2html841"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Utility routines</TITLE>
+<META NAME="description" CONTENT="Utility routines">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="previous" HREF="node34.html">
+<LINK REL="up" HREF="node9.html">
+<LINK REL="next" HREF="node39.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html652"
+  HREF="node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html648"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html644"
+  HREF="node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html650"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html653"
+  HREF="node39.html">C interface</A>
+<B> Up:</B> <A NAME="tex2html649"
+  HREF="node9.html">C++ classes and methods</A>
+<B> Previous:</B> <A NAME="tex2html645"
+  HREF="node37.html">Other grouping routines</A>
+ &nbsp; <B>  <A NAME="tex2html651"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00460000000000000000">
+Utility routines</A>
+</H1>
+
+<P>
+
+<UL>
+<LI><PRE> void SPreadColUnits(ExtHDU&amp;, string, string&amp;)
+</PRE>
+
+<P>
+Read the units associated with a column.
+
+<P>
+</LI>
+<LI><PRE> void SPwriteColUnits(Table&amp;, string, string)
+</PRE>
+
+<P>
+Write the units associated with a column.
+
+<P>
+</LI>
+<LI><PRE> string SPstringTform(const vector&lt;string&gt;&amp; Data)
+</PRE>
+
+<P>
+Returns the tform string for the longest string in the input vector.
+
+<P>
+</LI>
+<LI><PRE> Integer SPcopyHDUs(string infile, string outfile)
+</PRE>
+
+<P>
+Copy from infile to outfile all HDUs which are not manipulated by this library. 
+
+<P>
+</LI>
+<LI><PRE> Integer SPcopyKeys(string infile, string outfile, string HDUname, 
+       Integer HDUnumber)
+</PRE>
+       <PRE> Integer SPcopyKeys(string infile, string outfile, string HDUname, 
+       string outHDUname, Integer HDUnumber, Integer outHDUnumber)
+</PRE>
+
+<P>
+Copy non-critical keywords from infile to outfile for HDUname 
+          extension with EXTVER HDUnumber.
+
+<P>
+</LI>
+<LI><PRE> Integer SPwriteCreator(string filename, string HDUname,
+       string creator)
+</PRE>
+       <PRE> Integer SPwriteCreator(string filename, string HDUname,
+       Integer HDUnumber, string creator)
+</PRE>
+
+<P>
+Write the creating program and version id string into the
+          CREATOR keyword in the specified file.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;Integer&gt; SPfindExtensions(string filename, 
+       string keyname, string value, Integer&amp; Status);
+</PRE>
+
+<P>
+Find the numbers of any extensions containing keyword 
+          keyname=keyvalue
+
+<P>
+</LI>
+<LI><PRE> bool isValidXUnits(string xUnits)
+</PRE>
+
+<P>
+Checks whether xUnits are supported.
+
+<P>
+</LI>
+<LI><PRE> Integer calcXfactor(string xUnits, bool&amp; isWave, Real&amp; xFactor)
+</PRE>
+
+<P>
+Calculates the conversion factor for xUnits
+          energies/wavelength to keV. If xUnits is wavelength then
+          returns isWave as true.
+
+<P>
+</LI>
+<LI><PRE> bool isValidYUnits(string yUnits)
+</PRE>
+
+<P>
+Checks whether yUnits are supported.
+
+<P>
+</LI>
+<LI><PRE> Integer calcYfactor(string yUnits, bool&amp;
+  isEnergy, bool&amp; perWave, Real&amp; yFactor)
+</PRE>
+
+<P>
+Calculates the conversion factor for yUnits to ph/cm<IMG
+ WIDTH="12" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^2$">/s.
+          If yUnits contains an energy numerator (eg ergs) then
+          returns isEnergy as true. If yUnits contains a wavelength
+          denominator (eg micron) returns perWave as true.
+
+<P>
+</LI>
+<LI><PRE> void SPreportError(int errorNumber, string optionalString)
+</PRE>
+
+<P>
+Add to the error stack errorNumber along with an optional
+          string containing additional information.
+
+<P>
+</LI>
+<LI><PRE> string SPgetErrorStack()
+</PRE>
+
+<P>
+Write the entire error stack into a string.
+
+<P>
+</LI>
+<LI><PRE> string SPclearErrorStack()
+</PRE>
+
+<P>
+Clear the error stack.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;string&gt; SPreadStrings(const string&amp; filename)
+</PRE>
+
+<P>
+Read a text file and place each row into its own element of
+          a vector&lt;string&gt;.
+
+<P>
+</LI>
+<LI><PRE> vector&lt;string&gt; SPtokenize(const string &amp; str, 
+       const string &amp; delim)
+</PRE>
+
+<P>
+Divide a string into substrings delimited using delim.
+
+<P>
+</LI>
+<LI><PRE> string SPmatchString(const string&amp; str, 
+       const vector&lt;string&gt;&amp; strArray, int&amp; nmatch)
+</PRE>
+
+<P>
+Partial match a string from a vector of strings.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2Real(const vector&lt;string&gt;&amp; str, 
+       vector&lt;Real&gt;&amp; value)
+</PRE>
+
+<P>
+Convert a vector of strings into a vector of Reals.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2Real(const string&amp; str, Real&amp; value)
+</PRE>
+
+<P>
+Convert a string into a Real.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2double(const vector&lt;string&gt;&amp; str, 
+       vector&lt;double&gt;&amp; value)
+</PRE>
+
+<P>
+Convert a vector of strings into a vector of doubles.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2double(const string&amp; str, double&amp; value)
+</PRE>
+
+<P>
+Convert a string into a double.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2float(const vector&lt;string&gt;&amp; str, 
+       vector&lt;float&gt;&amp; value)
+</PRE>
+
+<P>
+Convert a vector of strings into a vector of floats.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2float(const string&amp; str, float&amp; value)
+</PRE>
+
+<P>
+Convert a string into a float.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2Integer(const vector&lt;string&gt;&amp; str, 
+       vector&lt;Integer&gt;&amp; value)
+</PRE>
+
+<P>
+Convert a vector of strings into a vector of Integers.
+
+<P>
+</LI>
+<LI><PRE> bool SPstring2Integer(const string&amp; str, Integer&amp; value)
+</PRE>
+
+<P>
+Convert a string into an Integer.
+
+<P>
+</LI>
+<LI><PRE> void SPcalcShift(const vector&lt;Real&gt;&amp; Low, 
+       const vector&lt;Real&gt;&amp; High, const vector&lt;Integer&gt;&amp; vStart, 
+       const vector&lt;Integer&gt;&amp; vEnd, const vector&lt;Real&gt;&amp; vShift, 
+       const vector&lt;Real&gt;&amp; vFactor, vector&lt;vector&lt;size\_t&gt; &gt;&amp; fromIndex, 
+       vector&lt;vector&lt;Real&gt; &gt;&amp; Fraction)
+</PRE>
+
+<P>
+Calculate factors for shifting an array
+
+<P>
+</LI>
+<LI><PRE> template &lt;class T&gt; void SPfind(const T&amp; array, 
+       const Real&amp; target, Integer&amp; index)
+</PRE>
+
+<P>
+Find the position in the array of the target value. If array 
+          is increasing the index is the last element in array <IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$\leq$">
+          target; if target <IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$&lt;$"> array[0] then index = -1; if target
+          <IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$\geq$"> array[array.size()-1] then index = array.size()-1.
+          If array is decreasing the index is the last element in
+          array <IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.png"
+ ALT="$\geq$"> target; if target <IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$&gt;$"> array[0] then index = -1; 
+          if target <IMG
+ WIDTH="18" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$\leq$"> array[array.size()-1] then index = 
+          array.size()-1. The template class T can be either vector 
+          or valarray of Real or Integer.
+
+<P>
+</LI>
+<LI><PRE> template &lt;class T&gt; void SPbisect(Integer&amp; lower, Integer&amp; upper, 
+       const T&amp; array, const Real&amp; target, bool increasing)
+</PRE>
+
+<P>
+Do a bisection search between indices lower and upper on
+          array to find target. On exit lower and upper are set to
+          the indices which bracket target.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html652"
+  HREF="node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html648"
+  HREF="node9.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html644"
+  HREF="node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html650"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html653"
+  HREF="node39.html">C interface</A>
+<B> Up:</B> <A NAME="tex2html649"
+  HREF="node9.html">C++ classes and methods</A>
+<B> Previous:</B> <A NAME="tex2html645"
+  HREF="node37.html">Other grouping routines</A>
+ &nbsp; <B>  <A NAME="tex2html651"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>

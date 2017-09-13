@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>PHA routines</TITLE>
+<META NAME="description" CONTENT="PHA routines">
+<META NAME="keywords" CONTENT="heasp_guide">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="heasp_guide.css">
+
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="up" HREF="node40.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html712"
+  HREF="node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html708"
+  HREF="node40.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html704"
+  HREF="node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html710"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html713"
+  HREF="node43.html">RMF files</A>
+<B> Up:</B> <A NAME="tex2html709"
+  HREF="node40.html">PHA files</A>
+<B> Previous:</B> <A NAME="tex2html705"
+  HREF="node41.html">PHA structure</A>
+ &nbsp; <B>  <A NAME="tex2html711"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00512000000000000000">
+PHA routines</A>
+</H2>
+
+<P>
+
+<UL>
+<LI><PRE> int ReadPHAtypeI(char *filename, long PHAnumber, struct PHA *phastruct)
+</PRE>
+
+<P>
+Read the type I SPECTRUM extension from a FITS file -
+               if there are multiple SPECTRUM extensions then read the
+               one with EXTVER=PHAnumber.
+
+<P>
+</LI>
+<LI><PRE> int ReadPHAtypeII(char *filename, long PHAnumber, long NumberSpectra,
+                   long *SpectrumNumber, struct PHA **phastructs)
+</PRE>
+
+<P>
+Read the type II SPECTRUM extension from a FITS file - 
+               if there are multiple SPECTRUM extensions then read the
+               one with EXTVER=PHAnumber. Within the SPECTRUM extension reads the
+               spectra listed in the SpectrumNumber vector.
+
+<P>
+</LI>
+<LI><PRE> int WritePHAtypeI(char *filename, struct PHA *phastruct)
+</PRE>
+
+<P>
+Write the spectrum to a type I SPECTRUM extension in a FITS file.
+
+<P>
+</LI>
+<LI><PRE> int WritePHAtypeII(char *filename, long NumberSpectra, 
+                   struct PHA **phastructs)
+</PRE>
+
+<P>
+Write the multiple spectra to a type II SPECTRUM
+               extension in a FITS file.
+
+<P>
+</LI>
+<LI><PRE> int ReturnPHAtype(char *filename, long PHAnumber)
+</PRE>
+
+<P>
+Return the type of the SPECTRUM extension with EXTVER=PHAnumber.
+
+<P>
+</LI>
+<LI><PRE> void DisplayPHAtypeI(struct PHA *phastruct)
+</PRE>
+
+<P>
+Write information about the spectrum to stdout.
+
+<P>
+</LI>
+<LI><PRE> void DisplayPHAtypeII(long NumberSpectra, struct PHA **phastructs)
+</PRE>
+
+<P>
+Write information about multiple spectra to stdout.
+
+<P>
+</LI>
+<LI><PRE> int RebinPHA(struct PHA *phastruct, struct BinFactors *bin)
+</PRE>
+
+<P>
+Rebin spectrum.
+
+<P>
+</LI>
+<LI><PRE> int CheckPHAcounts(char *filename, long PHAnumber)
+</PRE>
+
+<P>
+Return 0 if COUNTS column exists and is integer 
+               or COUNTS column does not exist.
+
+<P>
+</LI>
+<LI><PRE> long ReturnNumberofSpectra(char *filename, long PHAnumber)
+</PRE>
+
+<P>
+Return the number of spectra in the type II SPECTRUM
+               extension which has EXTVER equal to PHAnumber.
+
+<P>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html712"
+  HREF="node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/opt/local/share/lib/latex2html/icons/next.png"></A> 
+<A NAME="tex2html708"
+  HREF="node40.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/opt/local/share/lib/latex2html/icons/up.png"></A> 
+<A NAME="tex2html704"
+  HREF="node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/opt/local/share/lib/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html710"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/opt/local/share/lib/latex2html/icons/contents.png"></A>  
+ <A HREF="http://heasarc.gsfc.nasa.gov/docs/software/lheasoft">HEAsoft Home</A>
+<BR>
+<B> Next:</B> <A NAME="tex2html713"
+  HREF="node43.html">RMF files</A>
+<B> Up:</B> <A NAME="tex2html709"
+  HREF="node40.html">PHA files</A>
+<B> Previous:</B> <A NAME="tex2html705"
+  HREF="node41.html">PHA structure</A>
+ &nbsp; <B>  <A NAME="tex2html711"
+  HREF="node1.html">Contents</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Keith Arnaud
+2017-07-20
+</ADDRESS>
+</BODY>
+</HTML>
